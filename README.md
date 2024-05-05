@@ -17,4 +17,6 @@ Many thanks go to Cardano, Catalyst, Cardano community members for this project.
 April Sessions 2024
 
 1. <a href="https://coxygen.co/videos/Aiken-errors-resolved-Augustine-2024-04-19-13_03.mp4">Aiken Syntax Austine (2024-04-24 12_26 GMT+2).mp4</a>
+1. <a href="https://coxygen.co/videos/Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4">Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4</a>
+
 
