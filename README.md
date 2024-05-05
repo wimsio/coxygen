@@ -3,6 +3,14 @@
 
 Coxygen is a 24/7 Cardano Live Technical Support Service on Cardano Smart Contract development languages. These are many and include :Haskell, Aiken, Marlowe, helios, Lucid, Mesh, Maestro, Demeter and many others. The list keeps changing. We support only those that are actively maintained by their developer teams.
 
+This Coxygen github will have the folliwng:
+> a. Feedback reports
+> b. Links to videos on Smart Contract Languages guided usage
+> c. Technical Documentations on Smart Contract Languages installations and pre-requisites
+> d. Tests on source code
+> e. User Help Documentation on Smart Contract Development Languages
+> f. Links to Sessions of live support recorded videos on Smart Contract languages
+
 The platform is for helpers and those who need live support and we use terms explained below to define platform players/actors.
 
 ## B: Terms explanations:
