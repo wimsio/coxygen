@@ -72,3 +72,5 @@ The platform is for helpers and those who need live support. The terms used in C
 This is the place where the catalyst funded proposal Cardano Ecosystem : Smart Contract Languages Live Support(Oxygen), Documentation and Adoption (https://cardano.ideascale.com/c/idea/112227) open source code, files, etc will be shared with the rest of the Cardano Community.
 
 Many thanks go to Cardano, Catalyst, Cardano community members who voted for this project.
+
+By Bernard Sibanda cto@wims.io Women In Move Solutions Pty Ltd 
