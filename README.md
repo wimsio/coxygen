@@ -17,7 +17,7 @@ This Coxygen github will have the following:
 
 > f. Links to Sessions of live support recorded videos on Smart Contract languages
 
-The platform is for helpers and those who need live support and we use terms explained below to define platform players/actors.
+The platform is for helpers and those who need live support. The terms used in Coxygen are explained below:
 
 ## B: Terms explanations:
 
