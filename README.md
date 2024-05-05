@@ -74,7 +74,7 @@ The platform is for helpers and those who need live support. The terms used in C
 >> 15. <a href="https://coxygen.co/videos/Bernard walk through on commandline commands with Ridochila (2024-04-25 11_42 GMT+2).mp4">Bernard walk through on commandline commands with Ridochila (2024-04-25 11_42 GMT+2).mp4</a>
 >> 16. <a href="https://coxygen.co/videos/Coxygen Token Banele Session (2024-05-01 15_25 GMT+2).mp4">Coxygen Token Banele Session (2024-05-01 15_25 GMT+2).mp4</a>
 >> 17. <a href="https://coxygen.co/videos/Ridochila and Mary Pre requisites for Helios Lucid and Mesah-2024-04-29 11_12 GMT+2.mp4">Ridochila and Mary Pre requisites for Helios Lucid and Mesah-2024-04-29 11_12 GMT+2.mp4</a>
->> 18. <a href="https://coxygen.co/videos/Mary Smart Contract Documentation (2024-04-30 15_56 GMT+2).mp4">Mary Smart Contract Documentation (2024-04-30 15_56 GMT+2).mp4</a>
+>> 18. <a href="https://coxygen.co/videos/Mary Smart Contract Documentation  (2024-04-30 15_56 GMT+2).mp4">Mary Smart Contract Documentation  (2024-04-30 15_56 GMT+2).mp4</a>
 >> 19. <a href="https://coxygen.co/videos/documentation using mdbook Banele Ridochila (2024-05-02 18_06 GMT+2).mp4">documentation using mdbook Banele Ridochila (2024-05-02 18_06 GMT+2).mp4</a>
 >> 20. <a href="https://coxygen.co/videos/Lock and Unlock ADA using Aiken Session Banele.mp4">Lock and Unlock ADA using Aiken Session Banele.mp4</a>
 
