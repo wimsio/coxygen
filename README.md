@@ -32,8 +32,8 @@ The platform is for helpers and those who need live support. The terms used in C
 
 > a. Feedback reports
 
->> 1. <a href="https://coxygen.co/videos/Aiken-errors-resolved-Augustine-2024-04-19-13_03.mp4">Aiken Syntax Austine (2024-04-24 12_26 GMT+2).mp4</a>
->> 2. <a href="https://coxygen.co/videos/Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4">Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4</a>
+>> 1. <a href="https://coxygen.co/videos/Aiken-errors-resolved-Augustine-2024-04-19-13_03.mp4"></a>
+>> 2. <a href="https://coxygen.co/videos/Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4"></a>
 
 > b. Links to videos on Smart Contract Languages guided usage
 
@@ -45,13 +45,13 @@ The platform is for helpers and those who need live support. The terms used in C
 
 > c. Technical Documentations on Smart Contract Languages installations and pre-requisites
 
->> 1. <a href="https://coxygen.co/videos/Aiken-errors-resolved-Augustine-2024-04-19-13_03.mp4">Aiken Syntax Austine (2024-04-24 12_26 GMT+2).mp4</a>
->> 2. <a href="https://coxygen.co/videos/Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4">Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4</a>
+>> 1. <a href="https://coxygen.co/videos/Aiken-errors-resolved-Augustine-2024-04-19-13_03.mp4"></a>
+>> 2. <a href="https://coxygen.co/videos/Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4"></a>
 
 > d. Tests on source code
 
-> >> 1. <a href="https://coxygen.co/videos/Aiken-errors-resolved-Augustine-2024-04-19-13_03.mp4">Aiken Syntax Austine (2024-04-24 12_26 GMT+2).mp4</a>
->> 2. <a href="https://coxygen.co/videos/Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4">Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4</a>
+>> 1. <a href="https://coxygen.co/videos/Aiken-errors-resolved-Augustine-2024-04-19-13_03.mp4"></a>
+>> 2. <a href="https://coxygen.co/videos/Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4"></a>
 
 > e. User Help Documentation on Smart Contract Development Languages
 
