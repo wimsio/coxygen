@@ -16,5 +16,5 @@ Many thanks go to Cardano, Catalyst, Cardano community members for this project.
 
 April Sessions 
 
-![image](https://github.com/wimsio/coxygen/assets/44117539/2903caa4-e707-4f0d-bf50-3dfd76685486)
+![Aiken Syntax Austine (2024-04-24 12_26 GMT+2).mp4](https://coxygen.co/images/Aiken Syntax Austine (2024-04-24 12_26 GMT+2).mp4)
 
