@@ -37,8 +37,11 @@ The platform is for helpers and those who need live support. The terms used in C
 
 > b. Links to videos on Smart Contract Languages guided usage
 
->> 1. <a href="https://coxygen.co/videos/Aiken-errors-resolved-Augustine-2024-04-19-13_03.mp4">Aiken Syntax Austine (2024-04-24 12_26 GMT+2).mp4</a>
->> 2. <a href="https://coxygen.co/videos/Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4">Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4</a>
+>> 1. <a href="https://coxygen.co/videos/Buzwane Tefo Session Send Data Cardano eUTXOs on explorer 1 (2024-04-02 11_11 GMT+2).mp4">EUTXO Tutorial Session Video</a>
+>> 2. <a href="https://coxygen.co/videos/Thomas Mabele Masibo Marlowe Introduction (2024-03-27 13_06 GMT+2).mp4">Marlowe Introduction</a>
+>> 1. <a href="https://coxygen.co/videos/Augustine Session Plutus Core ledger api (2024-04-25 13_02 GMT+2).mp4>Plutus Ledger API V1 </a>
+>> 2. <a href="https://coxygen.co/videos/Overview of Haskell and Functional programming Session Augustine (2024-04-25 14_36 GMT+2).mp4">Overview of Haskell and Functional programming Session Augustine (2024-04-25 14_36 GMT+2).mp4</a>
+>> 1. <a href="https://coxygen.co/videos/Annointed George-Boaz-Chisomaga-Rido-Priscilla-smart contract typescript testing using jimba js (2024-04-22 09_26 GMT+2).mp4 ">Smart Contract Tesing Jimba js Introduction</a>
 
 > c. Technical Documentations on Smart Contract Languages installations and pre-requisites
 
