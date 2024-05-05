@@ -81,11 +81,10 @@ The platform is for helpers and those who need live support. The terms used in C
 >> 18. <a href="https://coxygen.co/videos/Mary Smart Contract Documentation  (2024-04-30 15_56 GMT+2).mp4">Mary Smart Contract Documentation  (2024-04-30 15_56 GMT+2).mp4</a>
 >> 19. <a href="https://coxygen.co/videos/documentation using mdbook Banele Ridochila (2024-05-02 18_06 GMT+2).mp4">documentation using mdbook Banele Ridochila (2024-05-02 18_06 GMT+2).mp4</a>
 >> 20. <a href="https://coxygen.co/videos/Lock and Unlock ADA using Aiken Session Banele.mp4">Lock and Unlock ADA using Aiken Session Banele.mp4</a>
-
->> 17. <a href="https://coxygen.co/videos/Aiken-errors-resolved-Augustine-2024-04-19-13_03.mp4">Aiken-errors-resolved-Augustine-2024-04-19-13_03.mp4</a>
->> 18. <a href="https://coxygen.co/videos/Baudoiun Muvunga and Augustine - Coxygen and Aiken Session 2024-04-20 21_33 GMT+2.mp4">Baudoiun Muvunga and Augustine - Coxygen and Aiken Session 2024-04-20 21_33 GMT+2.mp4</a>
->> 19. <a href="https://coxygen.co/videos/Errors fixed Aiken Augustine session (2024-04-24 14_33 GMT+2).mp4">Errors fixed Aiken Augustine session (2024-04-24 14_33 GMT+2).mp4</a>
->> 20. <a href="https://coxygen.co/videos/Ridochila Demonstration Session-Pre-requisites installations and setup (2024-04-25 11_11 GMT+2).mp4">Ridochila Demonstration Session-Pre-requisites installations and setup (2024-04-25 11_11 GMT+2).mp4</a>
+>> 21. <a href="https://coxygen.co/videos/Aiken-errors-resolved-Augustine-2024-04-19-13_03.mp4">Aiken-errors-resolved-Augustine-2024-04-19-13_03.mp4</a>
+>> 22. <a href="https://coxygen.co/videos/Baudoiun Muvunga and Augustine - Coxygen and Aiken Session 2024-04-20 21_33 GMT+2.mp4">Baudoiun Muvunga and Augustine - Coxygen and Aiken Session 2024-04-20 21_33 GMT+2.mp4</a>
+>> 23. <a href="https://coxygen.co/videos/Errors fixed Aiken Augustine session (2024-04-24 14_33 GMT+2).mp4">Errors fixed Aiken Augustine session (2024-04-24 14_33 GMT+2).mp4</a>
+>> 24. <a href="https://coxygen.co/videos/Ridochila Demonstration Session-Pre-requisites installations and setup (2024-04-25 11_11 GMT+2).mp4">Ridochila Demonstration Session-Pre-requisites installations and setup (2024-04-25 11_11 GMT+2).mp4</a>
 
 ## D: Communications Channels for Coxygen : 
 
