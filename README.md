@@ -44,10 +44,10 @@ The platform is for helpers and those who need live support. The terms used in C
 >> 5. <a href="https://coxygen.co/videos/Annointed George-Boaz-Chisomaga-Rido-Priscilla-smart contract typescript testing using jimba js (2024-04-22 09_26 GMT+2).mp4 ">Smart Contract Tesing Jimba js Introduction</a>
 >> 6. <a href="https://coxygen.co/videos/Billie GHCi - Cabal - Nix etc installations (2024-03-03 16_02 GMT+2).mp4">GHCi - Cabal Installations</a>
 
-> c. Technical Documentations on Smart Contract Languages installations and pre-requisites
+> c. Technical Documentations on Smart Contract Languages installations, pre-requisites and Smart Contract development guides
 
 >> 1. <a href="https://coxygen.co/aiken/">Aiken</a>
->> 2. <a href="https://coxygen.co/videos/Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4"></a>
+>> 2. <a href="[https://coxygen.co/videos/Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4](https://coxygen.co/installations/)">Installations</a>
 
 > d. Tests on source code
 
