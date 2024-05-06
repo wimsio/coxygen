@@ -47,7 +47,7 @@ The platform is for helpers and those who need live support. The terms used in C
 > c. Technical Documentations on Smart Contract Languages installations, pre-requisites and Smart Contract development guides
 
 >> 1. <a href="https://coxygen.co/aiken/">Aiken</a>
->> 2. <a href="[https://coxygen.co/videos/Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4](https://coxygen.co/installations/)">Installations</a>
+>> 2. <a href="https://coxygen.co/installations/">Installations</a>
 
 > d. Tests on source code
 
