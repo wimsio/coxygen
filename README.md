@@ -46,8 +46,8 @@ The platform is for helpers and those who need live support. The terms used in C
 
 > c. Technical Documentations on Smart Contract Languages installations, pre-requisites and Smart Contract development guides
 
->> 1. <a href="https://coxygen.co/aiken/">Aiken</a>
->> 2. <a href="https://coxygen.co/installations/">Installations</a>
+>> 1. <a href="https://coxygen.co/aiken/">Aiken Development guide</a>
+>> 2. <a href="https://coxygen.co/installations/">Haskell, Marlowe, Aike, Helios, Lucid and Mesh Installation guides</a>
 
 > d. Tests on source code
 
