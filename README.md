@@ -51,8 +51,8 @@ The platform is for helpers and those who need live support. The terms used in C
 
 > d. Tests on source code
 
->> 1. <a href="https://coxygen.co/videos/Aiken-errors-resolved-Augustine-2024-04-19-13_03.mp4"></a>
->> 2. <a href="https://coxygen.co/videos/Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4"></a>
+>> 1. <a href="#">Jimbajs Tesing Library for Cardano Smart Contract Frontend Rapid Testing</a>
+>> 2. <a href="#></a>
 
 > e. User Help Documentation on Smart Contract Development Languages
 
