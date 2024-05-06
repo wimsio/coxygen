@@ -57,7 +57,7 @@ The platform is for helpers and those who need live support. The terms used in C
 > e. User Help Documentation on Smart Contract Development Languages
 
 >> 1. <a href="https://github.com/wimsio/coxygen/wiki/1.-Cardano-Wallets-Billie-Mathema-29%E2%80%9003%E2%80%902024">Cardano Wallets Billie Mathema 29-03-2024</a>
->> 2. <a href="https://github.com/wimsio/coxygen/wiki/2.--Github-For-New-Developers-%E2%80%90-Ridotshila-Mambeda-29%E2%80%9004%E2%80%902024">Github For New Developers  Ridotshila Mambeda 29-03-2024</a>
+>> 2. <a href="https://coxygen.co/user-help/github/">Github For New Developers  Ridotshila Mambeda 29-03-2024</a>
 >> 2. <a href="https://github.com/wimsio/coxygen/wiki/3.-Nami-Wallet-on-Chrome-browser-by-Mugdor-Mary-29%E2%80%9004%E2%80%902024">Nami Wallet on Chrome browser by Mugdor Mary 29-04-2024</a>
 
 > f. Links to Sessions of live support recorded videos on Smart Contract languages
