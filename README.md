@@ -52,7 +52,7 @@ The platform is for helpers and those who need live support. The terms used in C
 > d. Tests on source code
 
 >> 1. <a href="#">Jimbajs Tesing Library for Cardano Smart Contract Frontend Rapid Testing</a>
->> 2. <a href="#"></a>
+>> 2. <a href="https://github.com/wimsio/coxygen/tree/main/lucid-testing"> Lucid front end testing with jimba js</a>
 
 > e. User Help Documentation on Smart Contract Development Languages
 
