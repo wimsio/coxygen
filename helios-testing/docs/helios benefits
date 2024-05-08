@@ -1,0 +1,28 @@
+Cardano Smart Contract Example in 5 minutes using Helios DSL Functional Language
+
+Smart Contract Development Steps
+
+1. Create Smart Contract Script(onchain)
+2. Compile script to uplc
+3. Create offchain
+4. Create Front End for user to interact with Smart Contract
+5. PAB, Cardano node Connections...
+6. log onchain execution
+7. log Front UI
+8. Use CLI to set environment variables, pkh, cbor, creating sc public keys
+9. Test and debug all pieces
+10 View tx on cexplorer, search for nft policy id to use it to locate funds
+
+Good news Helios JS simplifies all the above
+
+- users need not use cli
+- need not know about Cardano node nor PAB
+- they will see and control everything from js and console log
+- concentrate on solving the problems and innovation than battling with tooling
+- no need to `heavily` depend on saas platforms as end-to-end solutions is accomplished using just vs code & Helios
+- handle all offchain, onchain and UI from one code base
+- all developers know && love javascript the most used
+- But this Helios is secure, efficient and fast : it is a functional programming language with easy to read book
+- just use all time to focus on logic and plutus core architecture
+- This is not only simplification of CSC development but speeding it too. It is best for PoC, MVP at the moment as Helios is   still under development. The more we use it and report bugs the more it gets refined.
+- it is so simplified that the dApp gives you your next action steps: no need to memorize steps, copy past policyids

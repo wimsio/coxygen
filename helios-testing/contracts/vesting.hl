@@ -1,0 +1,34 @@
+spending vesting
+
+struct Datum {
+    creator: PubKeyHash
+    beneficiary: PubKeyHash
+    deadline: Time
+}
+
+enum Redeemer {
+    Cancel
+    Claim
+}
+
+const done : Bool = false
+
+func main(datum: Datum, redeemer: Redeemer, context: ScriptContext) -> Bool {
+    tx: Tx = context.tx;
+    print("hellos am running");
+    now: Time = tx.time_range.start;
+   
+    redeemer.switch {
+        Cancel => {
+            // Check that the owner signed the transaction
+            tx.is_signed_by(datum.creator).trace("VS2: ")
+        },
+        Claim => {
+           // Check if deadline has passed.
+           (now > datum.deadline).trace("VS3: ") &&
+
+           // Check that the beneficiary signed the transaction.
+           tx.is_signed_by(datum.beneficiary).trace("VS4: ")
+        }
+    }
+}

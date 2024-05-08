@@ -1,0 +1,31 @@
+.card{
+    background-color: #bed6ee;
+    border-radius: 0.6rem; 
+    margin:0.4rem; 
+    text-align: left;
+    padding: 2rem;
+  }
+  .inputBoxes{
+    height: 35px;
+    width: 100%;
+    margin: 0.2rem;
+    padding: 3px;
+    border-radius: 0.5rem;
+  }
+
+  .inputButton{
+    height: 35px;
+    width: 100%;
+    margin: 0.2rem;
+    padding: 3px;
+    border-radius: 0.5rem;
+    background-color: darkseagreen;
+  }
+
+  .footer{
+    background-color: #bed6ee;
+    border-radius: 0.6rem; 
+    margin:0.4rem; 
+    text-align: left;
+    padding: 2rem;
+  }

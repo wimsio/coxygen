@@ -1,0 +1,52 @@
+.container {
+    padding: 1rem;
+    background-color: #FDEDEC;
+    border-radius: 1rem;
+  }
+  .main {
+    height: 100%;
+    padding: 0.3rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    }
+    .title {
+      margin: 0;
+      line-height: 1.15;
+      font-size: 1.5rem;
+    }
+    .selectWalletNot{
+      background-color: #ec6363;
+      border-radius: 0.5rem; 
+      margin:0.4rem;    
+    }
+    .selectWallet{
+      background-color: #fff;
+      border-radius: 0.5rem; 
+      margin:0.4rem;    
+    }
+    .card{
+      background-color: #F2F3F4;
+      border-radius: 0.6rem; 
+      margin:0.4rem; 
+    }
+    .selectRadio{
+      cursor: pointer;
+    }
+    .inputRadio{
+      cursor: pointer;
+      transform: scale(1.5); 
+    }
+    .labelInput{
+      height: 35px;
+      cursor: pointer;
+    }
+    .footer{
+      background-color: #bed6ee;
+      border-radius: 0.6rem; 
+      margin:0.4rem; 
+       padding: 2rem;
+    }
+  
+  

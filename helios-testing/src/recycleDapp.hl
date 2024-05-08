@@ -1,0 +1,94 @@
+
+spending complex_market_place_smart_contract
+
+enum TrackingStatus{
+    Created_enumTrackingStatus
+    Sold_enumTrackingStatus
+    Bought_enumTrackingStatus   
+    Cancelled_enumTrackingStatus
+}
+
+enum Redeemer{
+    Create_enumSmartContractOperations
+    Sell_enumSmartContractOperations
+    Buy_enumSmartContractOperations
+    Cancel_enumSmartContractOperations
+}
+
+struct User{
+    seller          : PubKeyHash
+    buyer           : PubKeyHash
+    owner           : PubKeyHash
+    donated         : PubKeyHash
+    manager         : PubKeyHash
+}
+
+struct OtherInfo{
+  info_structOtherInfo : Map[Data]Data       
+}
+
+struct Datum{
+    title         : String
+    description   : Option[String]
+    price         : Int
+    status        : Option[TrackingStatus]
+    otherInfo     : Option[OtherInfo]
+    user          : User
+    imageIPFSUrl  : String
+    timeRange     : TimeRange
+    nounce        : Int
+}
+
+
+func splitPay (currentTransaction : Tx, item : Datum) -> Bool {
+    
+    amount: Int = item.price;
+    ownerAmount: Int = amount * 2;
+    sellerAmount: Int = amount * 8;
+
+    oAmount: Value = Value::lovelace(ownerAmount);
+    sAmount: Value = Value::lovelace(sellerAmount);  
+    
+    ownerOutTxs : []TxOutput =  currentTransaction.outputs_sent_to(item.user.owner);
+    sellerOutTxs : []TxOutput =  currentTransaction.outputs_sent_to(item.user.seller);
+
+    (ownerOutTxs.head.value == oAmount) && (sellerOutTxs.head.value == sAmount)  
+}
+
+func main( item:Datum, smartContractOperations:Redeemer, currentTransactionContext : ScriptContext) -> Bool {
+    
+    currentTransaction: Tx = currentTransactionContext.tx;
+    
+     beforeDeadline : Bool = currentTransaction.time_range.start < item.timeRange.end;
+
+     itemNotEmpty : Bool = (
+                                item.title != "" && item.price > 0 && item.imageIPFSUrl != ""
+                            ); 
+    
+            smartContractOperations.switch{
+            
+                Create_enumSmartContractOperations => {
+                    currentTransaction.is_signed_by(item.user.owner).trace("it is signed by owner")
+               },
+                Sell_enumSmartContractOperations => {
+                    currentTransaction.is_signed_by(item.user.seller).trace("it is signed by seller")
+                    &&
+                    itemNotEmpty.trace("check price, imageUrl from IPFS and title are set")
+                },
+                Buy_enumSmartContractOperations => {
+                    currentTransaction.is_signed_by(item.user.buyer).trace("it is signed by buyer")
+                    && 
+                    currentTransaction.value_sent_to_datum(item.user.buyer, item.nounce, false) >= Value::lovelace(item.price)
+                    &&
+                    beforeDeadline.trace("tx done before deadline")
+                    &&
+                    itemNotEmpty.trace("check price, imageUrl from IPFS and title are set")
+                    &&
+                    splitPay(currentTransaction,item).trace("pay owner commission of 10% and seller rest 90% ")
+                },
+                Cancel_enumSmartContractOperations => {
+                    currentTransaction.is_signed_by(item.user.owner).trace("it is signed by owner")
+               }
+
+            }    
+}
