@@ -43,3 +43,22 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+The example testing with jimba js is in the index.tsx under pages directory.
+
+1. Install jimba using npm as shown below :
+   ```
+  npm i jimba or npm i jimba --force //that is if there are dependence problems
+   ```
+2. Import the jimba js library and turn on switches as shown below:
+ import {o,opt,tS,tE,jtest,jtrics,gNo,gNull,gAlphaNumericSymbolsString,gLowerCaseAlphabetString,gBoolean,gOnlyDigitsString,gUpperCaseAlphabetString} from 'jimba';
+  opt._O = 1;
+  opt._T = 1;
+  opt._tNo = 100;
+  opt._M = 1;
+  opt._Tc = 1;
+3. Testing code examples:
+```
+
+```
