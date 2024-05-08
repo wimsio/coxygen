@@ -1,0 +1,20 @@
+spending lock_nft
+
+struct Datum {
+    admin: PubKeyHash
+}
+
+enum Redeemer {
+    Retrieve
+}
+
+func main(datum: Datum, redeemer: Redeemer, context: ScriptContext) -> Bool {
+    tx: Tx = context.tx;
+    redeemer.switch {
+        Admin => {
+            // If admin signing can do anything.
+            tx.is_signed_by(datum.admin).trace("Is AdminWallet?: ")
+        }
+    }
+}
+
