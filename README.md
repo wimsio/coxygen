@@ -32,8 +32,12 @@ The platform is for helpers and those who need live support. The terms used in C
 
 > a. Feedback reports
 
->> 1. <a href="https://coxygen.co/videos/Aiken-errors-resolved-Augustine-2024-04-19-13_03.mp4"></a>
->> 2. <a href="https://coxygen.co/videos/Ousman Richard Mandisa(2024-04-21 17_51 GMT+2).mp4"></a>
+>> 1. ![image](https://github.com/wimsio/coxygen/assets/44117539/08214222-5f6e-46ef-80d6-7b77a005100c)
+>> 2. ![image](https://github.com/wimsio/coxygen/assets/44117539/73e507f3-1a58-436d-a637-1006df7b86bc)
+>> 3. ![image](https://github.com/wimsio/coxygen/assets/44117539/509baf38-48a8-419b-a50f-67ae130cc781)
+>> 4. ![image](https://github.com/wimsio/coxygen/assets/44117539/4c3a0e63-2645-4695-bf33-7a377f63c0ed)
+>> 5. ![image](https://github.com/wimsio/coxygen/assets/44117539/03750029-803a-45ed-95cb-34edb63e0d5b)
+>> 6. ![image](https://github.com/wimsio/coxygen/assets/44117539/316430ec-6aa2-47c5-9426-1148d0fff250)
 
 > b. Links to videos on Smart Contract Languages guided usage
 
