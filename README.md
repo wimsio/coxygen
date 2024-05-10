@@ -38,6 +38,7 @@ The platform is for helpers and those who need live support. The terms used in C
 >> 4. ![image](https://github.com/wimsio/coxygen/assets/44117539/4c3a0e63-2645-4695-bf33-7a377f63c0ed)
 >> 5. ![image](https://github.com/wimsio/coxygen/assets/44117539/03750029-803a-45ed-95cb-34edb63e0d5b)
 >> 6. ![image](https://github.com/wimsio/coxygen/assets/44117539/316430ec-6aa2-47c5-9426-1148d0fff250)
+>> 7. ![image](https://github.com/wimsio/coxygen/assets/44117539/d352b2ca-de50-45b3-9332-59464cf93ec0)
 
 > b. Links to videos on Smart Contract Languages guided usage
 
