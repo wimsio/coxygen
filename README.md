@@ -32,12 +32,18 @@ The platform is for helpers and those who need live support. The terms used in C
 
 > a. Feedback reports
 
->> 1. ![image](https://github.com/wimsio/coxygen/assets/44117539/08214222-5f6e-46ef-80d6-7b77a005100c)
->> 2. ![image](https://github.com/wimsio/coxygen/assets/44117539/73e507f3-1a58-436d-a637-1006df7b86bc)
->> 3. ![image](https://github.com/wimsio/coxygen/assets/44117539/509baf38-48a8-419b-a50f-67ae130cc781)
->> 4. ![image](https://github.com/wimsio/coxygen/assets/44117539/4c3a0e63-2645-4695-bf33-7a377f63c0ed)
->> 5. ![image](https://github.com/wimsio/coxygen/assets/44117539/03750029-803a-45ed-95cb-34edb63e0d5b)
+>> 1. ![image](https://github.com/wimsio/coxygen/assets/44117539/de110ced-2f90-47e3-ad61-31677ec77e78)
+
+>> 2. ![image](https://github.com/wimsio/coxygen/assets/44117539/924e36a5-c5e4-4472-998b-fa4516eb74e5)
+
+>> 3. ![image](https://github.com/wimsio/coxygen/assets/44117539/c65a08d3-4d19-440d-9405-1b5d3bc40027)
+
+>> 4. ![image](https://github.com/wimsio/coxygen/assets/44117539/1ccc206c-022f-4091-b6a8-9017f49bb020)
+
+>> 5. ![image](https://github.com/wimsio/coxygen/assets/44117539/82ae2237-25c7-456c-87a6-87737869e963)
+
 >> 6. ![image](https://github.com/wimsio/coxygen/assets/44117539/316430ec-6aa2-47c5-9426-1148d0fff250)
+
 >> 7. ![image](https://github.com/wimsio/coxygen/assets/44117539/d352b2ca-de50-45b3-9332-59464cf93ec0)
 
 > b. Links to videos on Smart Contract Languages guided usage
