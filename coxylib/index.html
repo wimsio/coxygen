@@ -19,7 +19,7 @@ import {opt,j} from "./js/jimba.js";
     opt._T = 1;
     opt._M = 0;
     opt._F = 0; 
-    opt._FailsOnly = 1;
+    opt._FailsOnly = 0;
 
 import {txPrerequisites,init,showWalletData,walletEssentials,getAssets,sendADA,sendAssets,txFunc,hlib} from "./coxylib.js";
 
@@ -32,18 +32,21 @@ addEventListener("DOMContentLoaded", async (event) => { j.s("addEventListener");
     const wallet = await init(j); j.log({wallet});
     
     const walletData = await walletEssentials(wallet,Cip30Wallet,WalletHelper,Value,txPrerequisites.minAda,j); j.log({walletData});
-    
-     //const walletData = await walletEssentials(wallet,Cip30Wallet,WalletHelper,Value,txPrerequisites.minAda,j); j.log({walletData});
-    
+
+    //01 : display information or use coxylib individual functions
     // const displayWalletInfo = await showWalletData(walletData,txPrerequisites.minAda,AssetClass,j); j.log({displayWalletInfo});
 
-    const toAddress = "addr_test1qr7ptqdcgk5entht50aql66q6g645rtd5fl56s39z5xhg8ureje9958swj5p7edq3nwmjerdm3aw2gw9w826hefxtrhq8zrukx";
-    const amountToTransfer = 20;
-    sendADA(
-            toAddress,
-            amountToTransfer
-        );
+    //02: Give toAddress and amount and call sendADA function from coxylib
+    
+    // const toAddress = "addr_test1qr7ptqdcgk5entht50aql66q6g645rtd5fl56s39z5xhg8ureje9958swj5p7edq3nwmjerdm3aw2gw9w826hefxtrhq8zrukx";
+    // const amountToTransfer = 20;
+    // sendADA(
+    //         toAddress,
+    //         amountToTransfer
+    //     );
 
+    //03: Give mph, name of token, quantity and send to address and then call sendAssets
+    
     // sendAssets(
     // 	"3a794781489f02c5ac13eea6ef4be01d0e01f62e3fca1c670702a50f",
     // 	"Vesting Key",
@@ -51,17 +54,19 @@ addEventListener("DOMContentLoaded", async (event) => { j.s("addEventListener");
     // 	"addr_test1qpp37fkyf5807s25qchn30dr6pv8scd2ct93y4j0y9wuy4xdv4w0hcamdq83wm6f9x2xetnl0j2qpk306u92k4q4xeusyqe5gp"
     // )
     
-    // mintAssets(
-    //     walletData,
-    //     "Coxygen Mock-Hackathon POA",
-    //     "Coxygen Mock-Hackathon POA",
-    //     "https://coxygen.co/images/poa/POACoxygen.jpeg",
-    //     txPrerequisites,
-    //     j,
-    //     hlib,
-    //     txFunc,
-    //     mintAssetsScript
-    // )
+    //04: Give the mintAssets function these parameters: walletData declared above, nft title, nft description, nft url image or ips url and leave the rest of parameters as they are (txPrerequisites,j,hlib,txFunc,mintAssetsScript)
+    
+    mintAssets(
+        walletData,
+        "Coxygen Mock-Hackathon POA",
+        "Coxygen Mock-Hackathon POA",
+        "https://coxygen.co/images/poa/POACoxygen.jpeg",
+        txPrerequisites,
+        j,
+        hlib,
+        txFunc,
+        mintAssetsScript
+    )
 
     
 });
