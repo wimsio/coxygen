@@ -82,6 +82,7 @@ try
 	else
 	{				
 		alert("Sorry you need to connect to browsers wallets: Nami/Eternl/Lace in preprod network");
+		
 		return null;
 	}
 
@@ -89,7 +90,7 @@ try
 } 
 catch (error) 
 {
-        j.log({error});		
+        console.log({error});		
 		return null;
 		
 }
@@ -99,9 +100,9 @@ export async function walletEssentials(selectedWallet,Cip30Wallet,WalletHelper,V
 {
     try
 	{
-    	j.test("showWalletData","selectedWallet",selectedWallet).string();
-    	j.test("showWalletData",'jimba j',j).object();
-    	j.test("showWalletData","utxoAmount",utxoAmount).geq(0);
+     	j.test("showWalletData","selectedWallet",selectedWallet).string();
+     	j.test("showWalletData",'jimba j',j).object();
+     	j.test("showWalletData","utxoAmount",utxoAmount).geq(0);
     
     	const wallet = await eval('window.cardano.'+selectedWallet); j.log({wallet});j.test("WalletEssentials","wallet",wallet).object();
     
@@ -129,7 +130,7 @@ export async function walletEssentials(selectedWallet,Cip30Wallet,WalletHelper,V
 	} 
 	catch (error) 
 	{
-        j.log({error});	
+        console.log({error});	
 		return null;	
 	}
 
@@ -175,7 +176,7 @@ try
 } 
 catch (error) 
 {
-    j.log({error});	
+   console.log({error});
 	return null;	
 }
 
@@ -206,7 +207,7 @@ export async function getAssets(asset,j)
          return  json;
         
     })
-    .catch(function (error){ j.log({error});
+    .catch(function (error){ console.log({error});
         return error;
     }); 
     
@@ -246,7 +247,7 @@ export const sendAssets = async(assetMPH,assetName,assetQty,toAddress)=>{
 			tx.addOutput(new hlib.TxOutput(hlib.Address.fromBech32(toAddress), new hlib.Value(BigInt(0),assetsTokenOrNFTs)));
             const txh = txFunc(walletData,hlib,tx,j,txPrerequisites.networkParamsUrl);
 		} catch (error) {
-			 j.log({error});
+			 console.log({error});
 		}
 	}
 
@@ -267,30 +268,30 @@ export const sendADA = async (toAddress,amountToTransfer) => {
 		 const txh = txFunc(walletData,hlib,tx,j,txPrerequisites.networkParamsUrl);
 		
 	} catch (error) {
-        j.log({error});
+       console.log({error});
 	}	
 	
 }
 
-const shortAddressFunc = async (walletData,j)=>{
+export const shortAddressFunc = async (walletData,j)=>{
     const baseAddress = (await walletData.walletHelper.baseAddress); j.log({baseAddress});
     const bech32Address = baseAddress.toBech32(); j.log({bech32Address});
     const shortAddress = bech32Address.toString().slice(0,10) +"..."+ bech32Address.toString().substr(bech32Address.length - 5); j.log({shortAddress});
     return shortAddress;
 }
 
-const addressFunc = async (walletData,j)=>{
+export const addressFunc = async (walletData,j)=>{
     const baseAddress = (await walletData.walletHelper.baseAddress); j.log({baseAddress});
     const bech32Address = baseAddress.toBech32(); j.log({bech32Address});
     return bech32Address;
 }
 
-const adaFunc = async (walletData,j)=>{
+export const adaFunc = async (walletData,j)=>{
     const balanceLovelace = (await walletData.walletHelper.calcBalance()).lovelace.toString(); j.log({balanceLovelace});
     return balanceLovelace;
 }
 
-const assetFunc = async (walletData,AssetClass,j)=>{
+export const assetFunc = async (walletData,AssetClass,j)=>{
     const utxos = await walletData.utxos;j.log({utxos});
     const assets= Object.values(Object.values(utxos[0]))[0].value.assets.dump(); j.log({assets});
     const assetsArray =  Object.keys(assets).map((key,value) => [key, assets[key]]); j.log({assetsArray});  
