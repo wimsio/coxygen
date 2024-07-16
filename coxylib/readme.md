@@ -7,11 +7,15 @@ Advantages of this Coxylib:
 - easy and quick to integrate website to Cardano blockchain.
 - 100% efficient client side code.
 - every developer knows how to use javascript and therefore this library helps make any developer develop on Cardano.
-- easy to deploy: to test, one has to copy and upload the coxylib folder to a cpanel folder and simple run it by pointing to the index.html. In the index.html given comment out code under addEventListener to test the library.
+- easy to deploy: to test, one has to copy and upload the coxylib folder to a cpanel folder and simple run it by pointing to the index.html. In the index.html given comment out code to test the library.
 
 - Test the library live at https://coxygen.co/coxylib/index.html
 
-- (Connect Nami to preprod network and add 5tADA collateral and have at least 20tAda in order to mint nfts); report issues here.
+- (Connect NamiEternl to preprod network and add 5tADA collateral and have at least 20tAda in order to mint nfts); report issues here.
+
+- ![image](https://github.com/user-attachments/assets/23868fda-9747-4823-9a83-ff605b837027)
+
+- ![image](https://github.com/user-attachments/assets/455950de-faaf-488b-b273-2ab5e23f3055)
 
 - ![image](https://github.com/user-attachments/assets/fa0bb265-e21e-4b83-9f3a-35dbae4b9a8e)
 
@@ -22,8 +26,7 @@ Advantages of this Coxylib:
 1. https://coxygen.co
 2. admin@coxygen.co, cto@coxygen.co
 3. https://github.com/wimsio/coxygen
-4. https://chat.whatsapp.com/
-I6y3xrRLMRfAIXQPb1IuU3
+4. https://chat.whatsapp.com/I6y3xrRLMRfAIXQPb1IuU3
 5. https://t.me/+JOi40VWgvMg0MzBk
 6. https://twitter.com/coxygenco
 7. https://discord.gg/RxrhMgnSb4
