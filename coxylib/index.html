@@ -1,52 +1,150 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>index-day-06-bernard-sibanda-14072024</title>
+	<title>index-day-07-bernard-sibanda-16072024 test</title>
 	<script type="text/javascript" src="js/jquery.js"></script>
 </head>
 
+<!-- script needs to have type module to allow importing Helios.js and Jimba.js-->
 <script type="module" type="text/javascript">
 
+//We need this api : helios so that we are able to use Cardano blockchain on our websites
 import {
 			bytesToHex,Cip30Wallet,WalletHelper,TxOutput,
 			Assets,bytesToText,hexToBytes,AssetClass,
 			Tx,Address, NetworkParams, Value,MintingPolicyHash,Program,ByteArrayData,ConstrData
 		} from "./js/helios.js";
 		
+//This library jimba is for doing many testing activities
+/*
+Tesing
+a) Testing using j.test() function needs opt._T = 1
+b) Testing using j.test() with console logging to show object stack frames function needs opt._T = 1 and opt._Ob = 1
+c) Testing using j.test() to display failed tests only(there is no need to be always showing passing tests). Set opt._T = 1 and opt.FailsOnly = 1 and/or opt._Ob = 1
+Checking variables normally called watches
+d) Use j.check() as follows j.check("<Give name of variable checked as string. This is the title>",<enter actual variable here>,"<expected value>"). e.g. const age = 68; 
+j.check("watching age",age,60); This fails because age has value 68 not 60.
+Console logging improved
+e) Use the upgraded j.log({}) instead of console log so that you can switch it off and on and even show/hide stack frames. It is short to write and gives variables labels
+e.g. const name = "James"; j.log({name); To see the results make sure opt._O = 1 and/or to see stack frames set opt._M = 1
+Robust testing functions with multiple abitrary ranged values use i) pack function for collecting all unit tests and j.gNo() random generator for numbers. Jimba give random arbitrary generators for strings, bools, etc too.
+e.g.
+const discodancers = (name)=>{
+    return name + " is a dancer";
+}
+
+//The packOfFuncs will run each unit test case opt._tNo times. This means you can change the opt._tNo(maximum times tests to run) to any stress testing number you want e.g. 100000
+const packOfFuncs =()=>{
+ //unit testcase 1
+ const rname = j.lowerC(10); //generate randome lower case strings
+ const rnameC = rname.charAt(0).toUpperCase() + rname.slice(1); // capitalize first letter
+ j.test("Group A Unit Tests",'discodancers',discodancers).string();
+}
+
+j.trics(packOfFuncs);
+
+OUTPUT(100 tests):
+91 : jTESTING Group A Unit Tests :>: discodancers
+jimba.js:854 ✓ PASS : Ldxiqjkiuz is a dancer :>>: string
+jimba.js:249 93 : jTESTING Group A Unit Tests :>: discodancers
+jimba.js:854 ✓ PASS : Jeibnczdup is a dancer :>>: string
+jimba.js:249 95 : jTESTING Group A Unit Tests :>: discodancers
+jimba.js:854 ✓ PASS : Lpcbuqzwfw is a dancer :>>: string
+jimba.js:249 97 : jTESTING Group A Unit Tests :>: discodancers
+jimba.js:854 ✓ PASS : Sxcetkkzeb is a dancer :>>: string
+jimba.js:249 99 : jTESTING Group A Unit Tests :>: discodancers
+jimba.js:854 
+*/
 import {opt,j} from "./js/jimba.js";
-    opt._R = 0; 
-    opt._O = 0; 
-    opt._T = 1;
-    opt._M = 0;
-    opt._F = 0; 
-    opt._FailsOnly = 0;
+    opt._R = 0; //run all tests, checks and logs
+    opt._O = 1; //run only logs
+    opt._M = 0; //show stake frames of logs
+    opt._T = 1; //run tests
+    opt._Ob = 0; //show tests stack frames
+    opt._FailsOnly = 0; //run only failed tests
+    opt._F = 0;  //show functions that are marked with j.s() and j.e() for function profiling
+    opt._tNo = 50; //this is the number of times testPack will run
 
-import {txPrerequisites,init,showWalletData,walletEssentials,getAssets,sendADA,sendAssets,txFunc,hlib} from "./coxylib.js";
+//We need functions and objects from coxylib which wrap helios classes and make it easy for users to integrate Cardano blockchain
+import {txPrerequisites,init,walletEssentials,txFunc,hlib,hexToTex,shortAddressFunc, addressFunc, adaFunc, assetFunc,getAssets,sendADA,sendAssets,showWalletData} from "./coxylib.js";
 
+//This is file with mint/burn function. To burn, enter negative number for assets
 import {mintAssets} from "./mintAssets.js";
 
+//This file allows creation of smart contracts on one file. Once the smart contract has been tested on Helios playground then 
+//bring it to a file like this and give it parameters. NOTE the use of backticks
+//--------------------------BEGIN ONCHAIN HELIOS SCRIPT CODE---
+... this for the onchain Helios source code
+//--------------------------END ONCHAIN HELIOS SCRIPT CODE---
 import  {mintAssetsScript} from './mintAssetsScript.js';
 
-addEventListener("DOMContentLoaded", async (event) => { j.s("addEventListener"); j.check("addEventListener","Started","Started")
 
-    const wallet = await init(j); j.log({wallet});
+//test function for demonstration purposes
+const discodancers = (name)=>{
+    return name + " is a dancer";
+}
+
+const testPack = (async()=>{
     
-    const walletData = await walletEssentials(wallet,Cip30Wallet,WalletHelper,Value,txPrerequisites.minAda,j); j.log({walletData});
-
-    //01 : display information or use coxylib individual functions
-    // const displayWalletInfo = await showWalletData(walletData,txPrerequisites.minAda,AssetClass,j); j.log({displayWalletInfo});
-
-    //02: Give toAddress and amount and call sendADA function from coxylib
+     const rname = j.lowerC(10); //generate randome lower case strings
+     const rnameC = rname.charAt(0).toUpperCase() + rname.slice(1); // capitalize first letter
+     j.test("Group A Unit Tests",'discodancers',discodancers(rnameC)).string();    
     
+    // //01
+    // txPrerequisites.maxTxFee = j.gNo()
+    // j.test("coxylib testPack","txPrerequisites.maxTxFee",txPrerequisites.maxTxFee).geq(40);
+    
+    // //02
+    // const hex = j.hexR();
+    // const textFromHex = hexToTex(hex) + " <= " + hex;
+    // j.test("coxylib testPack","hexToTex",textFromHex).string();
+    
+    // //03
+    // const wallet = await init(j);
+    // j.test("coxylib testPack", "init",wallet).eq("lace")
+    
+    // //04
+    // const walletData = await walletEssentials(wallet,Cip30Wallet,WalletHelper,Value,txPrerequisites.minAda,j); 
+    // j.test("coxylib testPack","walletEssentials walletEnabled",walletData.walletEnabled).notBool()
+    
+    // //05
+    // const sAddress = await shortAddressFunc(walletData,j) 
+    // j.test("coxylib testPack","shortAddressFunc",sAddress).string()
+    
+    // //06
+    // const addr = await addressFunc(walletData,j) 
+    // j.test("coxylib testPack","addressFunc",addr).object()
+    
+    // //07
+    // const tAda = await adaFunc(walletData,j) 
+    // j.test("coxylib testPack","adaFunc",tAda).num()
+    
+    // //08
+    // const assetsArray = await assetFunc(walletData,AssetClass,j) 
+    // j.test("coxylib testPack","assetsArray",assetsArray).array()
+    
+    // //09
+    // const mph = assetsArray[1].mph+assetsArray[1].assetHexName; 
+    // j.test("coxylib testPack","mph",mph).string();
+    
+    // //10
+    // const assetObject = await getAssets(mph,j);
+    // j.test("coxylib testPack","getAssets",assetObject).object()
+    
+    // //11
+    // const assetObjectName = await getAssets(mph,j);
+    // j.test("coxylib testPack","assetObjectName",assetObjectName[2]).string();
+    
+    // //12
     // const toAddress = "addr_test1qr7ptqdcgk5entht50aql66q6g645rtd5fl56s39z5xhg8ureje9958swj5p7edq3nwmjerdm3aw2gw9w826hefxtrhq8zrukx";
     // const amountToTransfer = 20;
     // sendADA(
     //         toAddress,
     //         amountToTransfer
     //     );
-
-    //03: Give mph, name of token, quantity and send to address and then call sendAssets
-    
+        
+        
+    // //13
     // sendAssets(
     // 	"3a794781489f02c5ac13eea6ef4be01d0e01f62e3fca1c670702a50f",
     // 	"Vesting Key",
@@ -54,23 +152,27 @@ addEventListener("DOMContentLoaded", async (event) => { j.s("addEventListener");
     // 	"addr_test1qpp37fkyf5807s25qchn30dr6pv8scd2ct93y4j0y9wuy4xdv4w0hcamdq83wm6f9x2xetnl0j2qpk306u92k4q4xeusyqe5gp"
     // )
     
-    //04: Give the mintAssets function these parameters: walletData declared above, nft title, nft description, nft url image or ips url and leave the rest of parameters as they are (txPrerequisites,j,hlib,txFunc,mintAssetsScript)
+    // //14
+    // mintAssets(
+    //     walletData,
+    //     "Coxygen Mock-Hackathon POA",
+    //     "Coxygen Mock-Hackathon POA",
+    //     "https://coxygen.co/images/poa/POACoxygen.jpeg",
+    //     txPrerequisites,
+    //     j,
+    //     hlib,
+    //     txFunc,
+    //     mintAssetsScript
+    // )
     
-    mintAssets(
-        walletData,
-        "Coxygen Mock-Hackathon POA",
-        "Coxygen Mock-Hackathon POA",
-        "https://coxygen.co/images/poa/POACoxygen.jpeg",
-        txPrerequisites,
-        j,
-        hlib,
-        txFunc,
-        mintAssetsScript
-    )
+    // // 15
+    //  const displayWalletInfo = await showWalletData(walletData,txPrerequisites.minAda,AssetClass,j); 
+    //  j.log({displayWalletInfo});
 
-    
-});
+})
 
+//j.trics(null) use it with null if there is no testPack
+j.trics(testPack); //loops opt._tNo(see const above) times calling each unit test in the testPack  
 
 </script>
 </html>
