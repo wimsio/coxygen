@@ -401,7 +401,7 @@ export const mintTokens =(tx,mph,token,redeemer,j)=>{
             token,
             redeemer
         ); j.log({tx})		
-		return tx;
+	return tx;
 }
 
 export const txRefInput =(tx,utxo,j)=>{
