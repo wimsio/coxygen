@@ -238,15 +238,24 @@ export const j={
         { 
             if(opt._T === 1|| opt._R===1 || !(k === 0))
             {       
-                const trackcalls = (opt._Tc++)+" : ";  
+                const trackcalls = (opt._Tc++)+" : "; 
+                
+                 if(opt._FailsOnly === 1)
+                 {
+                     //
+                 }
+                 else
+                 {
+                     console.log("%c"+trackcalls+"jTESTING "+title+" :>: "+fTitle,"background-color:#fff;color:purple;");
+                 }
 
-                console.log("%c"+trackcalls+"jTESTING "+title+" :>: "+fTitle,"background-color:#fff;color:purple;");
+                
 
                 return new ComparisonMethods(actual);
             }
             else
             {
-                //
+                 return new ComparisonMethods(actual);
             }
 
         }
@@ -281,7 +290,14 @@ export const j={
         {
             typeof varString === 'string';
     
-            console.log(tBallConsole,cssBlue);
+            if(opt._FailsOnly === 1)
+            {
+               // 
+            }
+            else
+            {
+              console.log(tBallConsole,cssBlue);   
+            }
     
             if(varString === undefined || varString == null)
             {
@@ -439,6 +455,11 @@ export const j={
 
         passes(k),fails(k);funcs(k);tests(k);
     },
+    hexR : () => {
+      let n = (Math.random() * 0xfffff * 1000000).toString(16);
+      return n;
+    }
+    ,
     gNo:(min=opt._Min, max=opt._Max)=>{
         min = Math.ceil(min);
         max = Math.floor(max);
@@ -775,6 +796,17 @@ class ComparisonMethods {
             fail(this.actual,"bool",k); 
         }
       }
+    notBool(k=0)
+    {
+        if (typeof this.actual !=  'boolean') 
+        {
+            pass(this.actual,"notBool",k); 
+        } 
+        else 
+        {
+            fail(this.actual,"notBool",k); 
+        }
+      }
     num(k=0)
     {
         if (typeof this.actual === 'number') 
@@ -808,6 +840,7 @@ class ComparisonMethods {
             fail(this.actual,"string",k);         
         }
       }
+     
         
 }
 
