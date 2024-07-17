@@ -1,3 +1,21 @@
+/*
+Version : 1.0.1
+Coxylib is a set of atomic functions simplifying use of Helios smart contract library.
+Author:         Bernard Sibanda (Coxygen Global Pty Ltd)
+License :       MIT License
+Installation :  Import this coxylib.js file to any project even static websites. Please note there are Helios and Jimba dependecies
+Date Started:   2024
+
+Advantages:
+- it gives testable atomic funtions for Cardano blockchain integration
+- simplifies and speeds up decentralized cardano development
+- easy deployment even on cpanel websites
+- comes packed with testing library jimba.js and also standalone Helios.js
+- uses a much improved console.logs which can be switched on and off
+- 100% client side dapp development
+- no need for npm, nodejs, and other painful bloating packages
+- implements code best design functions e.g. code re-use, functional programming, etc 
+*/
 
 import {
 			bytesToHex,Cip30Wallet,WalletHelper,TxOutput,
