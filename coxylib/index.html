@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>index-day-07-bernard-sibanda-16072024 test</title>
+	<title>index-day-19-bernard-sibanda-18072024 test</title>
 	<script type="text/javascript" src="js/jquery.js"></script>
 </head>
 
@@ -56,114 +56,95 @@ jimba.js:249 99 : jTESTING Group A Unit Tests :>: discodancers
 jimba.js:854 
 */
 import {opt,j} from "./js/jimba.js";
-    opt._R = 0; //run all tests, checks and logs
+    opt._R = 0;//run all tests, checks and logs
     opt._O = 1; //run only logs
     opt._M = 0; //show stake frames of logs
     opt._T = 1; //run tests
     opt._Ob = 0; //show tests stack frames
     opt._FailsOnly = 0; //run only failed tests
     opt._F = 0;  //show functions that are marked with j.s() and j.e() for function profiling
-    opt._tNo = 50; //this is the number of times testPack will run
+    opt._tNo = 1; //this is the number of times testPack will run
 
 //We need functions and objects from coxylib which wrap helios classes and make it easy for users to integrate Cardano blockchain
-import {txPrerequisites,init,walletEssentials,txFunc,hlib,hexToTex,shortAddressFunc, addressFunc, adaFunc, assetFunc,getAssets,sendADA,sendAssets,showWalletData} from "./coxylib.js";
+import {txPrerequisites,init,walletEssentials,txFunc,hlib,hexToTex,shortAddressFunc, addressFunc, adaFunc, assetFunc,getAssets,sendADA,sendAssets,showWalletData,mint} from "./coxylib.js";
 
 //This is file with mint/burn function. To burn, enter negative number for assets
-import {mintAssets} from "./mintAssets.js";
+//import {mint} from "./mintAssets1.js";
 
 //This file allows creation of smart contracts on one file. Once the smart contract has been tested on Helios playground then 
 //bring it to a file like this and give it parameters. NOTE the use of backticks
 //--------------------------BEGIN ONCHAIN HELIOS SCRIPT CODE---
-... this for the onchain Helios source code
+//... this for the onchain Helios source code
 //--------------------------END ONCHAIN HELIOS SCRIPT CODE---
-import  {mintAssetsScript} from './mintAssetsScript.js';
+//import  {mintAssetsScript} from './mintAssetsScript.js';
 
-
-//test function for demonstration purposes
-const discodancers = (name)=>{
-    return name + " is a dancer";
-}
 
 const testPack = (async()=>{
     
-     const rname = j.lowerC(10); //generate randome lower case strings
-     const rnameC = rname.charAt(0).toUpperCase() + rname.slice(1); // capitalize first letter
-     j.test("Group A Unit Tests",'discodancers',discodancers(rnameC)).string();    
+    const wallet =  await init(j);
+    j.test("coxylib testPack", "init",wallet).eq("lace")
     
-    // //01
-    // txPrerequisites.maxTxFee = j.gNo()
-    // j.test("coxylib testPack","txPrerequisites.maxTxFee",txPrerequisites.maxTxFee).geq(40);
+    const walletData = await walletEssentials(wallet,Cip30Wallet,WalletHelper,Value,txPrerequisites.minAda,j); j.log({walletData})
+    j.test("coxylib testPack","walletEssentials walletEnabled",walletData.walletEnabled).notBool() 
+    
+    //01
+    txPrerequisites.maxTxFee = j.gNo()
+    j.test("coxylib testPack","txPrerequisites.maxTxFee",txPrerequisites.maxTxFee).geq(40);
     
     // //02
-    // const hex = j.hexR();
-    // const textFromHex = hexToTex(hex) + " <= " + hex;
-    // j.test("coxylib testPack","hexToTex",textFromHex).string();
+    const hex = j.hexR();
+    const textFromHex = hexToTex(hex) + " <= " + hex;
+    j.test("coxylib testPack","hexToTex",textFromHex).string();
     
-    // //03
-    // const wallet = await init(j);
-    // j.test("coxylib testPack", "init",wallet).eq("lace")
+    //05
+    const sAddress = await shortAddressFunc(walletData,j) 
+    j.test("coxylib testPack","shortAddressFunc",sAddress).string()
     
-    // //04
-    // const walletData = await walletEssentials(wallet,Cip30Wallet,WalletHelper,Value,txPrerequisites.minAda,j); 
-    // j.test("coxylib testPack","walletEssentials walletEnabled",walletData.walletEnabled).notBool()
+    document.getElementById("address").innerHTML = sAddress;
     
-    // //05
-    // const sAddress = await shortAddressFunc(walletData,j) 
-    // j.test("coxylib testPack","shortAddressFunc",sAddress).string()
+    //06
+    const addr = await addressFunc(walletData,j) 
+    j.test("coxylib testPack","addressFunc",addr).object()
     
-    // //06
-    // const addr = await addressFunc(walletData,j) 
-    // j.test("coxylib testPack","addressFunc",addr).object()
+    //07
+    const tAda = await adaFunc(walletData,j) 
+    j.test("coxylib testPack","adaFunc",tAda).num()
     
-    // //07
-    // const tAda = await adaFunc(walletData,j) 
-    // j.test("coxylib testPack","adaFunc",tAda).num()
+    document.getElementById("balance").innerHTML = tAda;
     
-    // //08
-    // const assetsArray = await assetFunc(walletData,AssetClass,j) 
-    // j.test("coxylib testPack","assetsArray",assetsArray).array()
+    //08
+    const assetsArray = await assetFunc(walletData,AssetClass,j) 
+    j.test("coxylib testPack","assetsArray",assetsArray).array()
     
-    // //09
-    // const mph = assetsArray[1].mph+assetsArray[1].assetHexName; 
-    // j.test("coxylib testPack","mph",mph).string();
+    //09
+    const mph = hexToTex("56657374696e67204b6579"); 
+    j.test("coxylib testPack","mph",mph).string();
     
-    // //10
-    // const assetObject = await getAssets(mph,j);
-    // j.test("coxylib testPack","getAssets",assetObject).object()
+    //10
+    const assetObject = await getAssets(mph,j);
+    j.test("coxylib testPack","getAssets",assetObject).object()
     
-    // //11
-    // const assetObjectName = await getAssets(mph,j);
-    // j.test("coxylib testPack","assetObjectName",assetObjectName[2]).string();
+    //11
+    const assetObjectName = await getAssets(mph,j);
+    j.test("coxylib testPack","assetObjectName",assetObjectName[2]).string();
     
     // //12
     // const toAddress = "addr_test1qr7ptqdcgk5entht50aql66q6g645rtd5fl56s39z5xhg8ureje9958swj5p7edq3nwmjerdm3aw2gw9w826hefxtrhq8zrukx";
     // const amountToTransfer = 20;
-    // sendADA(
-    //         toAddress,
-    //         amountToTransfer
-    //     );
+    // sendADA(toAddress,amountToTransfer);
         
         
-    // //13
+    //13
     // sendAssets(
-    // 	"3a794781489f02c5ac13eea6ef4be01d0e01f62e3fca1c670702a50f",
-    // 	"Vesting Key",
-    // 	1,
+    // 	"144a5f65ed8d4d10570d28d2c6764f8c63261696da6d4baa0d35998f",
+    // 	"WIMSEBUTestnetTokens",
+    // 	10,
     // 	"addr_test1qpp37fkyf5807s25qchn30dr6pv8scd2ct93y4j0y9wuy4xdv4w0hcamdq83wm6f9x2xetnl0j2qpk306u92k4q4xeusyqe5gp"
     // )
     
-    // //14
-    // mintAssets(
-    //     walletData,
-    //     "Coxygen Mock-Hackathon POA",
-    //     "Coxygen Mock-Hackathon POA",
-    //     "https://coxygen.co/images/poa/POACoxygen.jpeg",
-    //     txPrerequisites,
-    //     j,
-    //     hlib,
-    //     txFunc,
-    //     mintAssetsScript
-    // )
+    //14
+
+    //mint("Coxygen July 19 NFT","Coxygen POA NFT","https://coxygen.co/coxylib/images/NFT%20POA.jpeg");
     
     // // 15
     //  const displayWalletInfo = await showWalletData(walletData,txPrerequisites.minAda,AssetClass,j); 
@@ -175,4 +156,8 @@ const testPack = (async()=>{
 j.trics(testPack); //loops opt._tNo(see const above) times calling each unit test in the testPack  
 
 </script>
+<body>
+    <div id="address"></div><div id="balance"></div>
+
+</body>
 </html>
