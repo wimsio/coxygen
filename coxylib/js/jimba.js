@@ -817,19 +817,8 @@ class ComparisonMethods {
         {
             fail(this.actual,"num",k); 
         }
-    }
-    length(n,k=0)
-    {
-        if (this.actual.length === n) 
-        {
-            pass(this.actual.length,"length",k); 
-        } 
-        else 
-        {
-            fail(this.actual.length,"length",k); 
-        }
-    }
-    range(min=0,max=100,k=0)
+      }
+      range(min=0,max=100,k=0)
       {
           if (this.actual >= min, this.actual <= max) 
           {
