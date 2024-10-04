@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coxylib Dapp Factory : lock and unlock</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery.js"></script>
+    <script type="module">
+ import {
+      bytesToHex,Cip30Wallet,WalletHelper,TxOutput,
+	  Assets,bytesToText,hexToBytes,AssetClass,BlockfrostV0,
+	  Tx,Address, NetworkParams, Value,MintingPolicyHash,Program,ByteArrayData,ConstrData,NetworkEmulator,UTxO,TxId,Datum,ListData,RootPrivateKey,textToBytes,TxInput
+  } from "./js/helios.js";
+
+  import {
+      txPrerequisites,
+      init,
+      walletEssentials,
+      txEnd,
+      hlib,
+      hexToTex,
+      shortAddressFunc,
+      addressFunc,
+      getLovelace,
+      getAda,
+      displayValue,
+      assetFunc,
+      getKeyUtxo,
+      sendADA,
+      sendAssets,
+      showWalletData,
+      txDeadLine,
+      baseAddressPKH,
+      submitTx,
+      getAssetsFromValue,
+      genKeys,
+      wallet,
+      walletData,
+      generateMetadata,
+      getNetworkParams,
+      assetClassification,
+      mint,
+      tokenFound,
+      getValue,
+      saveKeyValue,
+      getAddr,
+      apiGetAssetFromPolicy,
+      strToHex,
+      apiListTransactionsFromPolicyHexTokenName,
+      apiListAddressFromSpecificPolicy,
+      txInputFromBlockfrost,
+      lock,
+      unLock,
+      start,
+      mintReferenceToken
+  } from "./js/coxylib.js"; //mint
+
+    import {opt,j} from "./js/jimba.js";
+    opt._R = 0; //run all tests, checks and logs
+    opt._O = 1; //run only logs
+    opt._M = 0; //show stake frames of logs
+    opt._T = 1; //run tests
+    opt._Ob = 1; //show tests stack frames
+    opt._FailsOnly = 0; //run only failed tests
+    opt._F = 0; //show functions that are marked with j.s() and j.e() for function profiling
+    opt._tNo = 1; //this is the number of times testPack will run
+
+import {vesting} from "./scripts/vesting.js";
+
+//const lock_ = await lock(vesting);
+
+const unlock = await unLock(vesting);
+
+</script>
+</head>
+<body>
+      lock and unlock demo Helios and Coxylib
+</body>
+</html>
