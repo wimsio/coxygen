@@ -4,6 +4,8 @@
 
 //source : Anyone can get the library here https://www.npmjs.com/package/jimba
 
+//link to live hosted demo : https://coxygen.co/coxygen.co/demo/tests/index.html
+
  ```
  import {opt,j} from "./js/jimba.js";
     opt._R = 0; //run all tests, checks and logs
