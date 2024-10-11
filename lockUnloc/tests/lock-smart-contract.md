@@ -1,4 +1,5 @@
 //This is a test code on the lock smart contract
+
 //Output is displayed below
 
  ```
