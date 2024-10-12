@@ -20,7 +20,8 @@ Below are graphs showing survey result conducted on the 10th October 2024
 
 ![image](https://github.com/user-attachments/assets/f1dcb3e4-9bfc-4731-88d9-de60d7463277)
 
-6 
+6 Agree or Disagree [Cardano Smart Contract development is very difficult]
 
-![image](https://github.com/user-attachments/assets/5eb67611-603f-4980-a7ff-94c791246313)
+![image](https://github.com/user-attachments/assets/24dac57b-5d54-408f-b032-bed99efb651e)
+
 
