@@ -1,0 +1,26 @@
+Below are graphs showing survey result conducted on the 10th October 2024
+
+1 Agree or Disagree [With Coxygen Global I will be productive]
+
+![image](https://github.com/user-attachments/assets/f69b1f3e-bdb9-40cd-8888-2a65cc4a2f6c)
+
+2 Agree or Disagree [Cardano Smart Contract Skills are very good]
+
+![image](https://github.com/user-attachments/assets/4ed35982-5931-456a-ba33-eb1a6a06e4bf)
+
+3 Agree or Disagree [This opportunity has improved my coding]
+
+![image](https://github.com/user-attachments/assets/afed49bf-5c46-448e-96e0-b78da95ae6d9)
+
+4 Agree or Disagree [Cardano Smart Contract development is very difficult]
+
+![image](https://github.com/user-attachments/assets/c48f5aa4-9f8e-4568-a04f-9fc16bb071a3)
+
+5 Agree or Disagree [I will recommend others to Coxygen Global]
+
+![image](https://github.com/user-attachments/assets/f1dcb3e4-9bfc-4731-88d9-de60d7463277)
+
+6 
+
+![image](https://github.com/user-attachments/assets/5eb67611-603f-4980-a7ff-94c791246313)
+
