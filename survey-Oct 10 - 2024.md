@@ -2,6 +2,9 @@ Below are graphs showing survey result conducted on the 10th October 2024
 
 1 
 
+![image](https://github.com/user-attachments/assets/f0a32f36-583a-4d5e-852a-6300a1efc49b)
+
+
 ![image](https://github.com/user-attachments/assets/f69b1f3e-bdb9-40cd-8888-2a65cc4a2f6c)
 
 2 
