@@ -1,4 +1,4 @@
-## wims cardano song
+## WIMS Cardano Song
 
 In the cradle of Cardano, we’ve sown a dream,  
 CIP-1694 lays the scheme.  
