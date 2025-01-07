@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coxygen Global</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'League Spartan', sans-serif;
+        }
+
+        body {
+            background-color: #f0f4fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .main-container {
+            max-width: 500px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .container img {
+            width: 120px;
+            margin: 20px auto;
+        }
+
+        .league-spartan-title {
+            font-size: 24px;
+            color: #003366;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .balance-card {
+            padding: 10px;
+            background-color: #eaf3ff;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .league-spartan-regular {
+            font-size: 18px;
+            color: #003366;
+        }
+
+        .input-group {
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .input-group label {
+            font-size: 14px;
+            color: #003366;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .league-spartan-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #d1d9e6;
+            font-size: 16px;
+            color: #003366;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .send-button,
+        .reset-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .send-button {
+            background-color: #003366;
+            color: #ffffff;
+        }
+
+        .reset-button {
+            background-color: #e0e6ed;
+            color: #003366;
+        }
+
+        .send-button:hover {
+            background-color: #0055aa;
+        }
+
+        .reset-button:hover {
+            background-color: #cdd4df;
+        }
+
+        .donor-list-container {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .terms {
+            font-size: 12px;
+            color: #888888;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        /* Donation Goal Section */
+        .goal-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #eaf3ff;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .goal-progress {
+            font-size: 18px;
+            color: #003366;
+        }
+
+        .goal-bar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 10px;
+            height: 20px;
+            margin-top: 10px;
+        }
+
+        .goal-bar-fill {
+            background-color: #003366;
+            height: 100%;
+            border-radius: 10px;
+        }
+    </style>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="module">
+        import {
+            bytesToHex, Cip30Wallet, WalletHelper, TxOutput,
+            Assets, bytesToText, hexToBytes, AssetClass,
+            Tx, Address, NetworkParams, Value, MintingPolicyHash,
+            Program, ByteArrayData, ConstrData, NetworkEmulator, PubKey,
+            textToBytes, Datum, ListData, IntData
+        } from "./helios.js";
+
+        import {
+            txPrerequisites, init, walletEssentials, txFunc, hlib, hexToTex, shortAddressFunc, 
+            addressFunc, adaFunc, assetFunc, getAssets, sendADA, sendAssets,
+            showWalletData, mint, txDeadLine, baseAddressPKH, submitTx, getAssetsFromValue
+        } from "./coxylib.js";
+
+        import { opt, j } from "./jimba.js";
+
+        opt._R = 1;
+        opt._O = 1;
+        opt._M = 1;
+        opt._T = 1;
+        opt._Ob = 0;
+        opt._FailsOnly = 0;
+        opt._F = 0;
+        opt._tNo = 1;
+
+        // Donation Goal
+        const donationGoal = 1000; // Set donation goal in ADA
+        
+        let totalDonated = 0;
+
+        document.getElementById("clearForm").addEventListener('click', () => {
+            document.getElementById("sendAdaForm").reset();
+        });
+
+        const wallet = await init(j);
+        
+        const walletData = await walletEssentials(wallet, Cip30Wallet, WalletHelper, Value, txPrerequisites.minAda, j);
+        
+        j.log({ walletData });
+
+        const displayLovelace = await adaFunc(walletData, j);
+        j.log({ displayLovelace });
+
+        const displayAda = (displayLovelace / 1000000).toLocaleString();
+        j.log({ displayAda });
+
+        document.getElementById("adaBalance").innerHTML = "₳ " + displayAda;
+
+        document.getElementById("sendAdaForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const recipientAddress = "addr_test1qqwe3k0pnjpqvkqdq34f5nzgazr3gr7urn3v68wz9nlklvqe85yf9q64zxeqc92s8dsykd3l02askpuksswecduxtlsqfh48qw";
+            const adaAmount = document.getElementById("amount").value;
+            const donorName = document.getElementById("donorName").value || "Anonymous";
+            const donorEmail = document.getElementById("donorEmail").value;
+
+            if (!donorName.trim()) {
+                alert("Please enter your name.");
+                return;
+            }
+
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (donorEmail && !emailRegex.test(donorEmail)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            try {
+                const result = await sendADA(recipientAddress, adaAmount);
+                if (result.success) {
+
+                totalDonated += parseFloat(adaAmount); // Update the total donated
+
+                save();
+
+                swal({
+                    title: "Donation Successful!",
+                    text: `Thank you for donating ₳${adaAmount}`,
+                    icon: "success",
+                });
+                
+                const res = await setGetKeyValue();
+                }
+            } catch (error) {
+                swal({
+                    title: "Transaction Failed",
+                    text: "There was an issue with your donation. Please try again.",
+                    icon: "error",
+                });
+            }
+        });
+
+        function updateGoalProgress(totalDonated) {
+            const goalProgress = document.getElementById("goalProgress");
+            const goalBarFill = document.getElementById("goalBarFill");
+            goalProgress.textContent = `₳${totalDonated} / ₳${donationGoal}`;
+            const progressPercentage = (totalDonated / donationGoal) * 100;
+            goalBarFill.style.width = `${progressPercentage}%`;
+        }
+
+        const res__ = await getValues("all"); j.log({res__})
+
+        const el = (elem)=>{
+            return document.getElementById(elem);
+        }
+        
+        const randString = (length=6)=>Math.random().toString(20).substr(2, length);
+
+        const save =async()=>{
+            
+            const donorData = el("donorName").value+","+el("donorEmail").value+","+el("amount").value
+        
+            const email_b = await setGetKeyValue("donorData_"+randString(), JSON.stringify(donorData)); j.log({email_b})
+        }
+        
+        function resCleaned(arrRes)
+        {
+             const setGetKeyValueResponse = JSON.parse(arrRes); j.log({setGetKeyValueResponse}) 
+             
+             const totalAmount = {amount:0};
+              
+              for(let i = 0; i < setGetKeyValueResponse.length; i++)
+              {
+                const resCleaned = setGetKeyValueResponse[i].replace('"','').replace('\n','').replace('"',''); j.log({resCleaned})  
+                
+                const newCounter = i+1; j.log({newCounter})
+                
+                if(resCleaned.length > 3)
+                {
+                     el("donorList").innerHTML += newCounter+": "+resCleaned+" ADA<br>"
+                }
+               
+                const amount = resCleaned.split(",")[2]; j.log({amount})
+                
+                totalAmount.amount += amount;
+              }
+              
+              updateGoalProgress(totalAmount.amount)
+        }
+        
+        async function getValues(){
+            
+            const xhttp = new XMLHttpRequest();
+            
+            xhttp.onload = function() {
+                if(this.responseText == "already saved")
+                {
+                   resCleaned(this.responseText)
+                }
+                else
+                {
+                    resCleaned(this.responseText)
+                }
+             
+            }
+            xhttp.open("GET", "./file.php?key=all&value=all", true);
+            
+            xhttp.send();
+        }
+        
+        async function setGetKeyValue(key,value="0"){
+    
+        const xhttp = new XMLHttpRequest();
+        
+        xhttp.onload = async function() {
+            
+        if(this.responseText == "already saved")
+        {
+          const msg = "Already saved";
+          
+          j.log({msg})
+        }
+        else
+        {
+          //empty controls and loaded donor details from server
+          window.location.reload();
+        }
+         
+        }
+        xhttp.open("GET", "./file.php?key="+key+"&value="+value, true);
+        
+        xhttp.send();
+
+}
+
+    </script>
+</head>
+<body>
+    <div class="main-container">
+        <div class="container">
+            <img src="coxygen.png" alt="Logo" />
+        </div>
+
+        <h1 class="league-spartan-title">Donate to Coxygen Global</h1>
+        <div class="balance-card">
+            <p class="league-spartan-regular" id="adaBalance">₳ 0</p>
+        </div>
+
+        <form id="sendAdaForm">
+            <div class="input-group">
+                <label for="donorName">Your Name:</label>
+                <input type="text" id="donorName" class="league-spartan-input" placeholder="Enter your name" />
+            </div>
+
+            <div class="input-group">
+                <label for="donorEmail">Your Email (Optional):</label>
+                <input type="email" id="donorEmail" class="league-spartan-input" placeholder="Enter your email" />
+            </div>
+
+            <div class="input-group">
+                <label for="amount">Amount to Donate (in ADA):</label>
+                <input type="number" id="amount" class="league-spartan-input" placeholder="Enter amount" required />
+            </div>
+
+            <div class="button-group">
+                <button type="submit" id="send" class="send-button" >Donate</button>
+                <button type="button" id="clearForm" class="reset-button">Reset</button>
+            </div>
+        </form>
+
+        <div class="donor-list-container" style="text-align:left;">
+            <h3>List of Donors(ADA)</h3>
+            <ul id="donorList"></ul>
+        </div>
+
+        <div class="goal-container">
+            <p class="goal-progress" id="goalProgress">₳0 / ₳1000</p>
+            <div class="goal-bar">
+                <div id="goalBarFill" class="goal-bar-fill"></div>
+            </div>
+        </div>
+
+        <div class="terms">
+            <p>By donating, you agree to our <a href="#">Terms of Service</a>.</p>
+        </div>
+    </div>
+</body>
+</html>
+				

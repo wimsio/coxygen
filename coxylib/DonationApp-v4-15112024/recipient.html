@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipient Page - Coxygen Global</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'League Spartan', sans-serif;
+        }
+
+        body {
+            background-color: #f0f4fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .main-container {
+            max-width: 600px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .league-spartan-title {
+            font-size: 24px;
+            color: #003366;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .donor-list-container, .top-donors-container {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .donor-list-container ul, .top-donors-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .donor-list-container li, .top-donors-container li {
+            font-size: 16px;
+            color: #003366;
+            margin: 8px 0;
+            padding: 8px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .total-donations {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        .clear-donors-button, .export-button, .search-button {
+            margin-top: 15px;
+            background-color: #003366;
+            color: #ffffff;
+            font-size: 16px;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .clear-donors-button:hover, .export-button:hover, .search-button:hover {
+            background-color: #003366;
+        }
+
+        .no-donors-message {
+            font-size: 16px;
+            color: #888888;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        input#searchDonor {
+            padding: 8px;
+            width: 80%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .search-button {
+            padding: 8px 16px;
+            background-color: #003366;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-button:hover {
+          background-color: #003366;
+    color: #ffffff;
+        }
+    </style>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <h2 class="league-spartan-title">Recent Donors</h2>
+
+        <div class="total-donations">
+            <h3>Total Donations: ₳<span id="totalAmount">0</span></h3>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="searchDonor" placeholder="Search donors" />
+            <button class="search-button" onclick="filterDonors()">Search</button>
+        </div>
+
+        <div class="donor-list-container">
+            <ul id="donorList"></ul>
+        </div>
+
+        <button id="clearDonors" class="clear-donors-button">Clear Recent Donors</button>
+        <button class="export-button" onclick="exportToCSV()">Export Donor List</button>
+
+        <div class="top-donors-container">
+            <h3>Top Donors</h3>
+            <ul id="topDonorsList"></ul>
+        </div>
+    </div>
+
+    <script>
+        const donors = JSON.parse(localStorage.getItem("donors")) || [];
+        const donorListElement = document.getElementById("donorList");
+        const clearDonorsButton = document.getElementById("clearDonors");
+
+        function updateDonorList() {
+            donorListElement.innerHTML = "";
+
+            if (donors.length === 0) {
+                const noDonorsMessage = document.createElement("p");
+                noDonorsMessage.textContent = "No donations have been made yet.";
+                noDonorsMessage.classList.add("no-donors-message");
+                donorListElement.appendChild(noDonorsMessage);
+                return;
+            }
+
+            donors.forEach(donor => {
+                const listItem = document.createElement("li");
+                listItem.textContent = `${donor.name} (${donor.email || "No email"}) - ₳${donor.amount}`;
+                donorListElement.appendChild(listItem);
+            });
+        }
+
+        function calculateTotalDonations() {
+            const total = donors.reduce((sum, donor) => sum + parseFloat(donor.amount), 0);
+            document.getElementById("totalAmount").textContent = total.toFixed(2);
+        }
+
+        function updateTopDonors() {
+            const topDonors = [...donors].sort((a, b) => b.amount - a.amount).slice(0, 3);
+            const topDonorsList = document.getElementById("topDonorsList");
+            topDonorsList.innerHTML = "";
+            topDonors.forEach(donor => {
+                const listItem = document.createElement("li");
+                listItem.textContent = `${donor.name} - ₳${donor.amount}`;
+                topDonorsList.appendChild(listItem);
+            });
+        }
+
+        function clearDonorList() {
+            swal({
+                title: "Are you sure?",
+                text: "This will remove all recent donors.",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    localStorage.removeItem("donors");
+                    donors.length = 0;
+                    updateDonorList();
+                    calculateTotalDonations();
+                    updateTopDonors();
+                    swal("All recent donors have been cleared.", { icon: "success" });
+                }
+            });
+        }
+
+        function filterDonors() {
+            const searchValue = document.getElementById("searchDonor").value.toLowerCase();
+            const filteredDonors = donors.filter(donor => 
+                donor.name.toLowerCase().includes(searchValue) || 
+                (donor.email && donor.email.toLowerCase().includes(searchValue))
+            );
+
+            donorListElement.innerHTML = "";
+
+            if (filteredDonors.length === 0) {
+                const noResultsMessage = document.createElement("p");
+                noResultsMessage.textContent = "No donors found matching your search.";
+                noResultsMessage.classList.add("no-donors-message");
+                donorListElement.appendChild(noResultsMessage);
+            } else {
+                filteredDonors.forEach(donor => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = `${donor.name} (${donor.email || "No email"}) - ₳${donor.amount}`;
+                    donorListElement.appendChild(listItem);
+                });
+            }
+        }
+
+        function exportToCSV() {
+            let csvContent = "data:text/csv;charset=utf-8,Name,Email,Amount\n";
+            donors.forEach(donor => {
+                csvContent += `${donor.name},${donor.email || ""},${donor.amount}\n`;
+            });
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "donor_list.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Initialize the donor list, total donations, and top donors
+        updateDonorList();
+        calculateTotalDonations();
+        updateTopDonors();
+
+        clearDonorsButton.addEventListener("click", clearDonorList);
+    </script>
+</body>
+</html>
