@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coxylib Dapp Factory : lock and unlock</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery.js"></script>
+    <script type="module">
+    
+ import {
+      bytesToHex,Cip30Wallet,WalletHelper,TxOutput,
+	  Assets,bytesToText,hexToBytes,AssetClass,BlockfrostV0,ValidatorHash,PubKeyHash,UplcDataValue,
+	  Tx,Address, NetworkParams, Value,MintingPolicyHash,Program,ByteArrayData,ConstrData,NetworkEmulator,UTxO,TxId,Datum,ListData,RootPrivateKey,textToBytes,TxInput
+  } from "./js/helios.js";
+
+  import {
+      txPrerequisites,
+      init,
+      walletEssentials,
+      txEnd,
+      hlib,
+      hexToTex,
+      shortAddressFunc,
+      addressFunc,
+      getLovelace,
+      getAda,
+      displayValue,
+      assetFunc,
+      getKeyUtxo,
+      sendADA,
+      sendAssets,
+      showWalletData,
+      txDeadLine,
+      baseAddressPKH,
+      submitTx,
+      getAssetsFromValue,
+      genKeys,
+      wallet,
+      walletData,
+      generateMetadata,
+      getNetworkParams,
+      assetClassification,
+      mint,
+      save,
+      tokenFound,
+      getValue,
+      saveKeyValue,
+      getAddr,
+      apiGetAssetFromPolicy,
+      strToHex,
+      apiListTransactionsFromPolicyHexTokenName,
+      apiListAddressFromSpecificPolicy,
+      txInputFromBlockfrost,
+      } from "./js/coxylib.js"; //mint
+
+    import {opt,j} from "./js/jimba.js";
+    opt._R = 0; //run all tests, checks and logs
+    opt._O = 1; //run only logs
+    opt._M = 0; //show stake frames of logs
+    opt._T = 1; //run tests
+    opt._Ob = 1; //show tests stack frames
+    opt._FailsOnly = 0; //run only failed tests
+    opt._F = 0; //show functions that are marked with j.s() and j.e() for function profiling
+    opt._tNo = 1; //this is the number of times testPack will run
+
+import {sales} from "./scripts/sales.js";
+
+const sell =async(sales,data)=>{
+
+        const asst = await assetFunc(); j.log({asst})
+        
+        const tokenNameHex = asst[0].assetHexName; j.log({tokenNameHex})
+        
+        const token = [[hexToBytes(tokenNameHex), BigInt(data.quantity)]]; 
+        
+        const mph = asst[0].mph; j.log({mph});
+        
+         data.mph= mph;
+        
+        data.tokenNameHex = tokenNameHex;
+        
+        const mphTokenNameHex = mph+"."+tokenNameHex; j.log({mphTokenNameHex})
+        
+        data.nft = new AssetClass(mphTokenNameHex); 
+        
+        const ass_t = new hlib.Assets();
+        
+        ass_t.addComponent(data.mph,data.tokenNameHex,data.quantity);
+        
+        const nftPrice = new Value(BigInt(data.nftPriceLovelace),ass_t); j.log({nftPrice})
+        
+        data.nftPrice = nftPrice
+        
+        const nftId = textToBytes(mphTokenNameHex+"004"); j.log({nftId})
+        
+        data.nftId = nftId;
+
+        const utxos = await walletData.utxos; j.log({utxos})
+        
+        const walletAPI = await walletData.walletAPI; j.log({walletAPI})
+        
+        const baseAddress = await walletData.walletHelper.baseAddress; j.log({baseAddress})
+        
+        const changeAddr = await walletData.walletHelper.changeAddress; j.log({changeAddr})
+        
+        const baseAddressPKH = baseAddress.pubKeyHash; j.log({baseAddressPKH});
+        
+        //data.highest_bidder = baseAddressPKH; //start as highest bidder
+        
+        const baseAddressHex = baseAddress.hex; j.log({baseAddressHex});
+        
+        const salesProgram = Program.new(sales);
+        
+        const salesProgramCompiled = salesProgram.compile(false); j.log({salesProgramCompiled})
+        
+        //const vHash = salesProgramCompiled.validatorHash.hex; j.log({vHash})
+        
+        const scriptAddress = Address.fromHashes(salesProgramCompiled.validatorHash); j.log({scriptAddress})
+        
+        data.seller = baseAddressPKH;
+        
+        data.scriptAddress = scriptAddress; 
+        
+        data.sellerAddressHex = baseAddressHex; j.log({data})
+
+        const salesDatum = new (salesProgram.types.Datum)(data.seller, data.nft,data.nftPrice,data.nftId); j.log({salesDatum})
+        
+        const inLineDatum = Datum.inline(salesDatum); j.log({inLineDatum});
+        
+        const txOutput = new TxOutput(scriptAddress, data.nftPrice,inLineDatum); j.log({txOutput});
+        
+        const tx = new Tx();
+        
+        tx.addInputs(utxos[0]); j.log({tx});
+        
+        tx.addOutput(txOutput); j.log({tx});
+        
+        
+        const txh = await txEnd(tx); j.log({txh});
+        
+        data.txHash = txh;
+        
+        save("data",JSON.stringify(data));
+        
+        return txh;
+        
+       
+        
+}
+
+// const data = {
+//     quantity:1,
+//     mph:null,
+//     tokenNameHex:null,
+//     seller:null,
+//     nft:null,
+//     nftPriceLovelace:5000000,
+//     nftPrice : null,
+//     scriptAddress:null,
+//     sellerAddressHex:null,
+//     txHash:null,
+//     buyer:null,
+//     buyerAmount:null
+// }
+
+// const s = await sell(sales,data); j.log({s})
+
+const buy =async(sales,amount)=>{
+
+    const data = JSON.parse(save("data")); j.log({data})
+        
+    const utxos = await walletData.utxos; j.log({utxos})
+        
+    const walletAPI = await walletData.walletAPI; j.log({walletAPI})
+    
+    const baseAddress = await walletData.walletHelper.baseAddress; j.log({baseAddress})
+    
+    const changeAddr = await walletData.walletHelper.changeAddress; j.log({changeAddr})
+    
+    const baseAddressPKH = baseAddress.pubKeyHash; j.log({baseAddressPKH});
+    
+    data.buyer = baseAddressPKH; //start as highest bidder
+    
+    const baseAddressHex = baseAddress.hex; j.log({baseAddressHex});
+    
+    const salesProgram = Program.new(sales);
+    
+    const salesProgramCompiled = salesProgram.compile(false); j.log({salesProgramCompiled})
+    
+    const vHash = salesProgramCompiled.validatorHash.hex; j.log({vHash})
+    
+    const scriptAddress = Address.fromHashes(salesProgramCompiled.validatorHash); j.log({scriptAddress})
+    
+    // const bAsset = new hlib.Assets(); 
+    
+    // bAsset.addComponent(data.mph,data.tokenNameHex,data.quantity);
+    
+    // const bV = new Value(BigInt(amount),bAsset); j.log({bV});
+
+    // data.buyerAmount = bV;
+    
+    const bTokenName = [[hexToBytes(data.tokenNameHex), BigInt(data.quantity)]];
+    const bAsset = new Assets([[MintingPolicyHash.fromHex(data.mph), bTokenName]]);
+    const bVal = new Value(BigInt(amount), bAsset);
+    
+    data.buyerAmount = bVal
+    
+    const txInput = await txInputFromBlockfrost(scriptAddress); j.log({txInput});
+    
+     //const mphTokenNameHex = data.mph+"."+data.tokenNameHex; j.log({mphTokenNameHex})
+    
+    const mphTokenNameHex = data.mph+"."+data.tokenNameHex; j.log({mphTokenNameHex})
+    
+     const nftId = textToBytes(mphTokenNameHex+"004"); j.log({nftId})    
+    
+    const redeemer = (new salesProgram.types.Redeemer.Buy(baseAddressPKH,data.buyerAmount,nftId))._toUplcData();
+
+    data.nft = new AssetClass(mphTokenNameHex); 
+    
+    const ast = new hlib.Assets(); 
+    
+    ast.addComponent(data.mph,data.tokenNameHex,data.quantity);
+    
+    const nftPrice = new Value(BigInt(data.nftPriceLovelace),ast); j.log({nftPrice});
+    
+    data.nftPrice = nftPrice;
+    
+    const salesDatum = new (salesProgram.types.Datum)(data.seller["bytes"], data.nft ,data.nftPrice, nftId); j.log({salesDatum})
+    
+    const inLineDatum = Datum.inline(salesDatum); j.log({inLineDatum});
+    
+    const ass_t = new hlib.Assets();
+    
+    ass_t.addComponent(data.mph,data.tokenNameHex,data.quantity);
+    
+    const assetBought = new Value(BigInt(data.nftPriceLovelace),ass_t); j.log({assetBought});
+    
+    const txOutput = new TxOutput(data.buyer, assetBought,inLineDatum); j.log({txOutput});
+    
+    const tx = new Tx();
+    
+    tx.addInputs(utxos[0]); j.log({tx});
+    
+    tx.addInput(txInput,redeemer);
+    
+    tx.attachScript(salesProgramCompiled);
+    
+    tx.addOutput(txOutput); j.log({tx});
+    
+    tx.addSigner(baseAddressPKH);
+
+    const txh = await txEnd(tx); j.log({txh});
+    
+    data.txHash = txh;
+
+    return txh;   
+        
+}
+const amount = 5000000;
+const nb = await buy(sales,amount); j.log({nb})
+
+
+
+</script>
+</head>
+<body>
+      lock and unlock demo Helios and Coxylib
+</body>
+</html>

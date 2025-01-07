@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coxylib Dapp Factory : lock and unlock</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery.js"></script>
+    <script type="module">
+    
+ import {
+      bytesToHex,Cip30Wallet,WalletHelper,TxOutput,
+	  Assets,bytesToText,hexToBytes,AssetClass,BlockfrostV0,ValidatorHash,PubKeyHash,UplcDataValue,
+	  Tx,Address, NetworkParams, Value,MintingPolicyHash,Program,ByteArrayData,ConstrData,NetworkEmulator,UTxO,TxId,Datum,ListData,RootPrivateKey,textToBytes,TxInput
+  } from "./js/helios.js";
+
+  import {
+      txPrerequisites,
+      init,
+      walletEssentials,
+      txEnd,
+      hlib,
+      hexToTex,
+      shortAddressFunc,
+      addressFunc,
+      getLovelace,
+      getAda,
+      displayValue,
+      assetFunc,
+      getKeyUtxo,
+      sendADA,
+      sendAssets,
+      showWalletData,
+      txDeadLine,
+      baseAddressPKH,
+      submitTx,
+      getAssetsFromValue,
+      genKeys,
+      wallet,
+      walletData,
+      generateMetadata,
+      getNetworkParams,
+      assetClassification,
+      mint,
+      save,
+      tokenFound,
+      getValue,
+      saveKeyValue,
+      getAddr,
+      apiGetAssetFromPolicy,
+      strToHex,
+      apiListTransactionsFromPolicyHexTokenName,
+      apiListAddressFromSpecificPolicy,
+      txInputFromBlockfrost,
+      } from "./js/coxylib.js"; //mint
+
+    import {opt,j} from "./js/jimba.js";
+    opt._R = 0; //run all tests, checks and logs
+    opt._O = 1; //run only logs
+    opt._M = 0; //show stake frames of logs
+    opt._T = 1; //run tests
+    opt._Ob = 1; //show tests stack frames
+    opt._FailsOnly = 0; //run only failed tests
+    opt._F = 0; //show functions that are marked with j.s() and j.e() for function profiling
+    opt._tNo = 1; //this is the number of times testPack will run
+
+import {auction} from "./scripts/auction.js";
+
+const bid =async(auction,data)=>{
+
+        //const quantity = 1;
+        
+        const asst = await assetFunc(); j.log({asst})
+        const tokenNameHex = asst[0].assetHexName; j.log({tokenNameHex})
+        const token = [[hexToBytes(tokenNameHex), BigInt(data.quantity)]];
+        const mph = asst[0].mph; j.log({mph});
+        data.mph= mph;
+        data.tokenNameHex = tokenNameHex;
+        data.bid_asset_class = new AssetClass(mph+"."+tokenNameHex); 
+        //data.min_bid = 3;
+        const ass_t = new hlib.Assets();
+        ass_t.addComponent(data.mph,data.tokenNameHex,data.quantity);
+        const outputValue = new Value(BigInt(0),ass_t); j.log({outputValue})
+        data.for_sale = outputValue
+        //data.highest_bid = 3; 
+
+        const utxos = await walletData.utxos; j.log({utxos})
+        
+        const walletAPI = await walletData.walletAPI; j.log({walletAPI})
+        
+        const baseAddress = await walletData.walletHelper.baseAddress; j.log({baseAddress})
+        
+        const changeAddr = await walletData.walletHelper.changeAddress; j.log({changeAddr})
+        
+        const baseAddressPKH = baseAddress.pubKeyHash; j.log({baseAddressPKH});
+        
+        data.highest_bidder = baseAddressPKH; //start as highest bidder
+        
+        const baseAddressHex = baseAddress.hex; j.log({baseAddressHex});
+        
+        const auctionProgram = Program.new(auction);
+        
+        const auctionProgramCompiled = auctionProgram.compile(false); j.log({auctionProgramCompiled})
+        
+        const vHash = auctionProgramCompiled.validatorHash.hex; j.log({vHash})
+        
+        const scriptAddress = Address.fromHashes(auctionProgramCompiled.validatorHash); j.log({scriptAddress})
+        
+        const scriptAddressBech32 = scriptAddress.toBech32(); j.log({scriptAddressBech32})
+        
+        data.seller = baseAddressPKH;
+        
+        data.scriptAddress = scriptAddress; 
+        
+        data.sellerAddressHex = baseAddressHex;
+        
+        data.scriptAddressBech32 = scriptAddressBech32; j.log({data})
+
+        const auctionDatum = new (auctionProgram.types.Datum)(data.seller,data.bid_asset_class,data.min_bid,data.for_sale,data.highest_bid,data.highest_bidder); j.log({auctionDatum})
+        
+        const inLineDatum = Datum.inline(auctionDatum); j.log({inLineDatum});
+        
+        const txOutput = new TxOutput(scriptAddress, data.for_sale,inLineDatum); j.log({txOutput});
+        
+        const tx = new Tx();
+        
+        tx.addInputs(utxos[0]); j.log({tx});
+        
+        tx.addOutput(txOutput); j.log({tx});
+        
+        const txh = await txEnd(tx); j.log({txh});
+        
+        data.txHash = txh;
+        
+        save("data",JSON.stringify(data));
+        
+        return txh;
+        
+}
+
+// const data = {
+//     quantity:3,
+//     mph:null,
+//     tokenNameHex:null,
+//     seller:null,
+//     bid_asset_class:null,
+//     min_bid:3000000,
+//     for_sale:null,
+//     highest_bid:3000000,
+//     highest_bidder:null,
+//     scriptAddress:null,
+//     sellerAddressHex:null,
+//     txHash:null,
+//     bid:3000000,
+//     scriptAddressBech32:null
+// }
+
+// const b = await bid(auction,data); j.log({b})
+
+const nbid =async(auction)=>{
+
+        const quantity = 1;
+        //const asst = await assetFunc(); j.log({asst})
+        const data = JSON.parse(save("data")); j.log({data})
+        const tokenNameHex = data.assetHexName; j.log({tokenNameHex})
+        const token = [[hexToBytes(data.tokenNameHex), BigInt(quantity)]];
+        const mph = data.mph; j.log({mph});
+        data.bid = 3000000;
+        data.bid_asset_class = new AssetClass(data.mph+"."+data.tokenNameHex); 
+        
+        const ass_t = new hlib.Assets();
+        ass_t.addComponent(data.mph,data.tokenNameHex,quantity);
+        const outputValue = new Value(BigInt(0),ass_t); j.log({outputValue})
+        data.for_sale = outputValue
+
+        const utxos = await walletData.utxos; j.log({utxos})
+        
+        const walletAPI = await walletData.walletAPI; j.log({walletAPI})
+        
+        const baseAddress = await walletData.walletHelper.baseAddress; j.log({baseAddress})
+        
+        const changeAddr = await walletData.walletHelper.changeAddress; j.log({changeAddr})
+        
+        const baseAddressPKH = baseAddress.pubKeyHash; j.log({baseAddressPKH});
+        
+        data.highest_bidder = baseAddressPKH; //start as highest bidder
+        
+        const baseAddressHex = baseAddress.hex; j.log({baseAddressHex});
+        
+        const auctionProgram = Program.new(auction);
+        
+        const auctionProgramCompiled = auctionProgram.compile(false); j.log({auctionProgramCompiled})
+        
+        const vHash = auctionProgramCompiled.validatorHash.hex; j.log({vHash})
+        
+        const scriptAddress = Address.fromHashes(auctionProgramCompiled.validatorHash); j.log({scriptAddress})
+        
+        data.seller = baseAddressPKH;
+        
+        data.scriptAddress = scriptAddress; 
+        
+        data.sellerAddressHex = baseAddressHex; j.log({data})
+        
+        const txInput = await txInputFromBlockfrost(scriptAddress); j.log({txInput});
+        
+        const redeemer = (new auctionProgram.types.Redeemer.Bid(baseAddressPKH,data.bid))._toUplcData();
+        
+        const auctionDatum = new (auctionProgram.types.Datum)(data.seller["bytes"],data.bid_asset_class,data.min_bid,data.for_sale,data.highest_bid,data.highest_bidder); j.log({auctionDatum})
+        
+        //const inLineDatum = Datum.inline(BigInt(0)) j.log({inLineDatum});
+        const inLineDatum = Datum.inline(auctionDatum); j.log({inLineDatum});
+        
+        const txOutput = new TxOutput(baseAddress, data.for_sale); j.log({txOutput});
+        
+        const outputVal = new Value(BigInt(data.min_bid),ass_t); j.log({outputValue})
+        
+        const txOutput2 = new TxOutput(scriptAddress,outputVal); j.log({txOutput});
+        
+        const outputVal3 = new Value(BigInt(data.min_bid)); j.log({outputValue})
+        
+        const txOutput3 = new TxOutput(changeAddr,outputVal3); j.log({txOutput});
+        
+       // const addOutputs =[txOutput,txOutput2];
+        
+        const tx = new Tx();
+        
+        tx.addInput(txInput,redeemer);
+        
+        tx.attachScript(auctionProgramCompiled);
+        
+        tx.addInputs(utxos[0]); j.log({tx});
+        
+        tx.addOutput(txOutput); j.log({tx});
+        
+       // tx.addOutput(txOutput2); j.log({tx});
+        
+       // tx.addOutput(txOutput3); j.log({tx});
+       tx.addSigner(baseAddressPKH)
+        
+        const txh = await txEnd(tx); j.log({txh});
+        
+        data.txHash = txh;
+        
+        //save("data",JSON.stringify(data));
+        
+        return txh;
+        
+}
+
+//const nb = await nbid(auction);
+
+
+export const sendADA = async (auction) => {   
+    
+        const quantity = 1;
+        //const asst = await assetFunc(); j.log({asst})
+        const data = JSON.parse(save("data")); j.log({data})
+        const tokenNameHex = data.assetHexName; j.log({tokenNameHex})
+        const token = [[hexToBytes(data.tokenNameHex), BigInt(quantity)]];
+        const mph = data.mph; j.log({mph});
+        data.bid = 3000000;
+        data.bid_asset_class = new AssetClass(data.mph+"."+data.tokenNameHex); 
+        
+        const ass_t = new hlib.Assets();
+        ass_t.addComponent(data.mph,data.tokenNameHex,quantity);
+        const outputValue = new Value(BigInt(0),ass_t); j.log({outputValue})
+        data.for_sale = outputValue
+
+
+         const baseAddress = await walletData.walletHelper.baseAddress; j.log({baseAddress})
+        
+        const changeAddr = await walletData.walletHelper.changeAddress; j.log({changeAddr})
+        
+        const baseAddressPKH = baseAddress.pubKeyHash; j.log({baseAddressPKH});
+
+        const baseAddressHex = baseAddress.hex; j.log({baseAddressHex});
+        
+        
+		const amountToTransferLovelace = Number(2) *1000000; 
+		
+		const maxTxFee = txPrerequisites.maxTxFee; 
+		
+		const minChangeAmt = txPrerequisites.minChangeAmt; 
+		
+		const minUTXOVal = new hlib.Value(BigInt(amountToTransferLovelace + maxTxFee + minChangeAmt));
+		
+		//const walletHelper = await walletData.walletHelper;
+		
+		 const auctionProgram = Program.new(auction);
+        
+        const auctionProgramCompiled = auctionProgram.compile(false); j.log({auctionProgramCompiled})
+        
+        //const vHash = auctionProgramCompiled.validatorHash.hex; j.log({vHash})
+        
+        const scriptAddress = Address.fromHashes(auctionProgramCompiled.validatorHash); j.log({scriptAddress})
+        
+        const utxo = await txInputFromBlockfrost(scriptAddress); j.log({txInput});
+		
+		const utxos =  await walletData.utxos;
+		
+	    const networkParams = new hlib.NetworkParams(await fetch(txPrerequisites.networkParamsUrl).then(response => response.json())); j.log({networkParams})
+	    
+       // const spareUtxo =  walletData.utxos[1]; j.log({spareUtxo});
+        
+        const txBeforeFinal = tx.dump(); j.log({txBeforeFinal})
+        
+        //const fnAddress =  await walletData.walletHelper.changeAddress; j.log({fnAddress})
+
+        const redeemer = (new auctionProgram.types.Redeemer.Buy(baseAddressPKH,quantity))._toUplcData();
+        
+        const auctionDatum = new (auctionProgram.types.Datum)(data.seller["bytes"],data.bid_asset_class,data.min_bid,data.for_sale,data.highest_bid,data.highest_bidder); j.log({auctionDatum})
+
+        const inLineDatum = Datum.inline(auctionDatum); j.log({inLineDatum});
+        
+        const tx = new hlib.Tx();
+        
+        tx.addInputs(utxo);
+        
+        tx.attachScript(auctionProgramCompiled)
+        
+        const value_ = new hlib.Value(BigInt(amountToTransferLovelace)); j.log({value_})
+        
+        tx.addOutput(new hlib.TxOutput(hlib.Address.fromBech32(baseAddress),ass_t ,inLineDatum));
+        
+        await tx.finalize(networkParams, scriptAddress,utxo);
+        
+        const signature = await walletData.walletAPI.signTx(tx); j.log({signature});
+        
+        tx.addSignatures(signature);
+        
+        const txR = await walletData.walletAPI.submitTx(tx); j.log({txR})
+        
+        const txHash = txR.hex; j.log({txHash});
+
+}
+</script>
+</head>
+<body>
+      lock and unlock demo Helios and Coxylib
+</body>
+</html>

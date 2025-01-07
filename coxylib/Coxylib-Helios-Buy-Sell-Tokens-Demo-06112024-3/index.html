@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coxylib Dapp Factory : lock and unlock</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery.js"></script>
+    <script type="module">
+    
+  import {
+      bytesToHex,Cip30Wallet,WalletHelper,TxOutput,StakingValidatorHash,
+	  Assets,bytesToText,hexToBytes,AssetClass,BlockfrostV0,ValidatorHash,PubKeyHash,UplcDataValue,TxOutputId,StakeAddress,
+	  Tx,Address, NetworkParams, Value,MintingPolicyHash,Program,ByteArrayData,ConstrData,NetworkEmulator,UTxO,TxId,Datum,ListData,RootPrivateKey,textToBytes,TxInput
+  } from "./js/helios.js";
+
+  import {
+      txPrerequisites, 
+      init,
+      walletEssentials,
+      txEnd,
+      hlib,
+      hexToTex,
+      shortAddressFunc,
+      addressFunc,
+      getLovelace,
+      getAda,
+      displayValue,
+      assetFunc,
+      getKeyUtxo,
+      sendADA,
+      sendAssets,
+      showWalletData,
+      txDeadLine,
+      baseAddressPKH,
+      submitTx,
+      getAssetsFromValue,
+      genKeys,
+      wallet,
+      walletData,
+      generateMetadata,
+      getNetworkParams,
+      assetClassification,
+      mint,
+      save,
+      tokenFound,
+      getValue,
+      setGetKeyValue,
+      getAddr,
+      apiGetAssetFromPolicy,
+      strToHex,
+      apiListTransactionsFromPolicyHexTokenName,
+      apiListAddressFromSpecificPolicy,
+      txInputFromBlockfrost,
+      getUtxoMphTokenNameHex,
+      sellAssets,
+      buyAssets,
+      cancelAssetsSale,
+      updateAssetsSale
+      } from "./js/coxylib.js"; //mint
+
+  import {opt,j} from "./js/jimba.js";
+    opt._R = 0; //run all tests, checks and logs
+    opt._O = 1; //run only logs
+    opt._M = 0; //show stake frames of logs
+    opt._T = 1; //run tests
+    opt._Ob = 1; //show tests stack frames
+    opt._FailsOnly = 0; //run only failed tests
+    opt._F = 0; //show functions that are marked with j.s() and j.e() for function profiling
+    opt._tNo = 1; //this is the number of times testPack will run
+
+import {buyselltokens} from "./scripts/buyselltokens.js";
+
+//1 sell tokens from my wallet
+// const data = {
+//     seller:null,
+//     nft:AssetClass,
+//     nftQuantity:5,
+//     nftUnitPriceLovelace:11000000,
+//     nftId:null,
+//     scriptAddress:null,
+//     txHash:null,
+//     scriptAddressBech32:null,
+//     nftTotalPriceLovelace: 0,
+//     saleNo:6
+// }
+
+// const sellResults = await sellAssets(buyselltokens,data); j.log({sellResults})
+
+//2 buy tokens using different accounts
+
+// const qty = 1;
+
+// const buyAssetsResults = await buyAssets(buyselltokens,qty); j.log({buyAssetsResults})
+
+//3 save values
+
+// const res = await setGetKeyValue("data");
+
+// const resR = res; j.log({res})
+
+//4 cancel asset sale
+
+// const cancelAssetsSaleResults = await cancelAssetsSale(buyselltokens); j.log({cancelAssetsSaleResults})
+
+//5. update token on sale
+
+const price = 9000000;
+
+const updateAssetsSaleResults = await updateAssetsSale(buyselltokens,price); j.log({updateAssetsSaleResults})
+
+</script>
+</head>
+<body>
+        <div class="container">
+      <h1>Coxylib Dapp Factory</h1>
+      <form>
+         Console based quick buyselltokens
+         <div id="tokens"></div>
+         <input type="number" id="qty" value="0"/>
+      </form>
+    </div>
+</body>
+</html>
