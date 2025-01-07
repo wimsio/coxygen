@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Coxygen Global - Cardano Live Technical Support</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coxygen Global - Cardano Live Technical Support</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'League Spartan', sans-serif;
+            background-color: #eef5ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+.league-spartan-title {
+    font-size: 24px;
+    color: #003366;
+    margin-bottom: 20px;
+    margin-top: 20px; /* Add this to create space at the top */
+    font-weight: 700;
+}
+
+        /* Container for header and main content */
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+            padding: 20px;
+            margin: 0 auto;
+  margin-top: 0px; 
+      }
+
+
+
+        /* Logo styles */
+        .logo {
+            max-width: 150px;
+            margin-bottom: 15px;
+        }
+
+        /* Intro section */
+        .intro-section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f7fbff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-section h2 {
+            font-size: 24px;
+            color: #003B6E;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .intro-section p {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Email Input Section */
+        .email-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #eef5ff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .email-section h3 {
+            font-size: 20px;
+            color: #003B6E;
+            font-weight: 600;
+        }
+
+        .email-section p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .email-input {
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .email-submit-button {
+            background-color: #003B6E;
+            color: #fff;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .email-submit-button:hover {
+            background-color: #046e6e;
+        }
+
+        /* Recent donations section */
+        .recent-donations {
+            background-color: #eef5ff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            margin-top: 30px;
+        }
+
+        .recent-donations h3 {
+            font-size: 20px;
+            color: #003B6E;
+            font-weight: 600;
+        }
+
+        .donation-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+            font-size: 15px;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .donation-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #d9e6f2;
+        }
+
+        /* Donation button */
+        .donate-button {
+            display: inline-block;
+            background-color: #003B6E;
+            color: #fff;
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 59, 110, 0.2);
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .donate-button:hover {
+            background-color: #046e6e;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.6);
+            border-top: 1px solid #d0e1f0;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            background-color: #003B6E;
+            color: #fff;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-info {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+          /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'League Spartan', sans-serif;
+        }
+
+        body {
+            background-color: #f0f4fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .main-container {
+            max-width: 500px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .container img {
+            width: 120px;
+            margin: 20px auto;
+        }
+
+        .league-spartan-title {
+            font-size: 24px;
+            color: #003366;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .balance-card {
+            padding: 10px;
+            background-color: #eaf3ff;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .league-spartan-regular {
+            font-size: 18px;
+            color: #003366;
+        }
+
+        .input-group {
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .input-group label {
+            font-size: 14px;
+            color: #003366;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .league-spartan-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #d1d9e6;
+            font-size: 16px;
+            color: #003366;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .send-button,
+        .reset-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .send-button {
+            background-color: #003366;
+            color: #ffffff;
+        }
+
+        .reset-button {
+            background-color: #e0e6ed;
+            color: #003366;
+        }
+
+        .send-button:hover {
+            background-color: #0055aa;
+        }
+
+        .reset-button:hover {
+            background-color: #cdd4df;
+        }
+
+        .donor-list-container {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .terms {
+            font-size: 12px;
+            color: #888888;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        /* Donation Goal Section */
+        .goal-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #eaf3ff;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .goal-progress {
+            font-size: 18px;
+            color: #003366;
+        }
+
+        .goal-bar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 10px;
+            height: 20px;
+            margin-top: 10px;
+        }
+
+        .goal-bar-fill {
+            background-color: #003366;
+            height: 100%;
+            border-radius: 10px;
+        }
+        
+         /* Header styles */
+        header {
+            background-color: #003B6E;
+            color: #fff;
+            padding: 30px 20px; /* Added horizontal padding */
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            top: 0;
+            z-index: 999;
+  margin-top: 20px; 
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        header p {
+            font-size: 18px;
+            margin-top: 8px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Logo styles */
+        .logo {
+            max-width: 150px;
+            margin-bottom: 15px;
+        }
+    </style>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="module">
+        import {
+            bytesToHex, Cip30Wallet, WalletHelper, TxOutput,
+            Assets, bytesToText, hexToBytes, AssetClass,
+            Tx, Address, NetworkParams, Value, MintingPolicyHash,
+            Program, ByteArrayData, ConstrData, NetworkEmulator, PubKey,
+            textToBytes, Datum, ListData, IntData
+        } from "./helios.js";
+
+        import {
+            txPrerequisites, init, walletEssentials, hlib, hexToTex, shortAddressFunc, 
+            addressFunc, getAda, txEnd, sendADA, sendAssets,
+            showWalletData, mint, txDeadLine, baseAddressPKH, submitTx, getAssetsFromValue
+        } from "./coxylib.js";
+
+        import { opt, j } from "./jimba.js";
+
+        opt._R = 1;
+        opt._O = 1;
+        opt._M = 0;
+        opt._T = 1;
+        opt._Ob = 0;
+        opt._FailsOnly = 0;
+        opt._F = 0;
+        opt._tNo = 1;
+        
+        import {mintThankYouNFT} from './mintThankYouNFT.js'
+
+        // Donation Goal
+        const donationGoal = 1000; // Set donation goal in ADA
+        
+        let totalDonated = 0;
+
+        document.getElementById("clearForm").addEventListener('click', () => {
+            document.getElementById("sendAdaForm").reset();
+        });
+
+        const wallet = await init(j);
+        
+        const walletData = await walletEssentials(wallet, Cip30Wallet, WalletHelper, Value, txPrerequisites.minAda, j);
+        
+        j.log({ walletData });
+
+        const displayLovelace = await getAda();
+        j.log({ displayLovelace });
+
+        const displayAda = (displayLovelace / 1000000).toLocaleString();
+        j.log({ displayAda });
+
+        document.getElementById("adaBalance").innerHTML = "₳ " + displayAda;
+
+        document.getElementById("sendAdaForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const recipientAddress = "addr_test1qqwe3k0pnjpqvkqdq34f5nzgazr3gr7urn3v68wz9nlklvqe85yf9q64zxeqc92s8dsykd3l02askpuksswecduxtlsqfh48qw";
+            const adaAmount = document.getElementById("amount").value;
+            const donorName = document.getElementById("donorName").value || "Anonymous";
+            const donorEmail = document.getElementById("donorEmail").value;
+
+            if (!donorName.trim()) {
+                alert("Please enter your name.");
+                return;
+            }
+
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            
+            if (donorEmail && !emailRegex.test(donorEmail)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+                const txhResult = await sendADA(recipientAddress, adaAmount); j.log({txhResult})
+                
+                if (txhResult.trim().length == 64) {
+                    
+                    const mty = mintThankYouDonorNFT(); j.log({mty})
+
+                    totalDonated += parseFloat(adaAmount); j.log({totalDonated})
+    
+                    const sv = save(); j.log({sv});
+                    
+                    const message = `Thank you for donating ₳${adaAmount}. Now you can sign and get a thank you Coxygen Global NFT. Keep it for futures discounts/benefits `; j.log({message})
+                    
+                    el("thankyou").innerHTML = message;
+
+                }
+
+        });
+        
+        const res = await setGetKeyValue(); j.log({res})
+
+        function updateGoalProgress(totalDonated) {
+            const goalProgress = document.getElementById("goalProgress");
+            const goalBarFill = document.getElementById("goalBarFill");
+            goalProgress.textContent = `₳${totalDonated} / ₳${donationGoal}`;
+            const progressPercentage = (totalDonated / donationGoal) * 100;
+            goalBarFill.style.width = `${progressPercentage}%`;
+        }
+
+        const res__ = await getValues("all"); j.log({res__})
+
+        const el = (elem)=>{
+            return document.getElementById(elem);
+        }
+        
+        const randString = (length=6)=>Math.random().toString(20).substr(2, length);
+
+        const save =async()=>{
+            
+            const donorData = el("donorName").value+","+el("donorEmail").value+","+el("amount").value
+        
+            const email_b = await setGetKeyValue("donorData_"+randString(), JSON.stringify(donorData)); j.log({email_b})
+        }
+        
+        function resCleaned(arrRes)
+        {
+             const setGetKeyValueResponse = JSON.parse(arrRes); j.log({setGetKeyValueResponse}) 
+             
+             let amount = 0;
+
+              for(let i = 0; i < setGetKeyValueResponse.length; i++)
+              {
+                const resCleaned = setGetKeyValueResponse[i].replace('"','').replace('\n','').replace('"',''); j.log({resCleaned})  
+                
+                const newCounter = i+1; j.log({newCounter})
+                
+                if(resCleaned.length > 3)
+                {
+                     el("donorList").innerHTML += newCounter+": "+resCleaned+" ADA<br>"
+                }
+                
+                const ada = resCleaned.split(",")[2];
+                
+                if(ada)
+                {
+                    amount += Number(ada.toString().trim()); j.log({amount})
+                }
+                
+              }
+
+              updateGoalProgress(amount)
+        }
+        
+        async function getValues(){
+            
+            const xhttp = new XMLHttpRequest();
+            
+            xhttp.onload = function() {
+                if(this.responseText == "already saved")
+                {
+                   resCleaned(this.responseText)
+                }
+                else
+                {
+                    resCleaned(this.responseText)
+                }
+             
+            }
+            xhttp.open("GET", "./file.php?key=all&value=all", true);
+            
+            xhttp.send();
+        }
+        
+        async function setGetKeyValue(key,value="0"){
+    
+            const xhttp = new XMLHttpRequest();
+            
+            xhttp.onload = async function() {
+                
+            if(this.responseText == "already saved")
+            {
+              const msg = "Already saved";
+              
+              j.log({msg})
+            }
+            else
+            {
+              //empty controls and loaded donor details from server
+            //   window.location.reload();
+            }
+             
+            }
+            xhttp.open("GET", "./file.php?key="+key+"&value="+value, true);
+            
+            xhttp.send();
+
+        }
+       
+        const mintThankYouDonorNFT = async () => {
+        
+        const tokenName = "Coxygen Global Donor"
+            
+             const tokenDescription = "Thank you for donating to Coxygen Global"
+             
+             //cip25
+            
+             const tokenImageUrl = "https://coxygen.co/coxygen.co/rido/DonationApp/wims%20token.jpg"
+             
+                const data = {
+                    assetName : tokenName,
+                    assetTitle: tokenName,
+                    tickerIconIPFS:tokenImageUrl,
+                    organization:"WIMS-Cardano SADC",
+                    organizationWebsiteUrl:"https://wims.io",
+                    assetDescription:tokenDescription,
+                    assetPurpose:"Loved pets on Cardano blockchain to live forever",
+                    quantity:"1",
+                    imageIPFS:"https://coxygen.co/images/misheck/misheck.png",
+                    videoIPFS:"https://coxygen.co/images/misheck/misheck.mp4",
+                    dateExpires:"0",
+                    otherInfo: "Why have a multese dog? The Maltese is kept for companionship, for ornament, or for competitive exhibition. It is ranked 59th of 79 breeds assessed for intelligence by Stanley Coren",
+                    address:"",//addr_test1qpsn3aykjm5z5s643z4tyq889kl0e9uyknmmts570djm3zhdlfa4tnw2ywu872g25mdv5kcqe4wc3lqtjnr3ah3xhu2qw58trw".toString().trim(),
+                    assetType:"Pets Social Token", //Fungible Token,Cardano Non Fungigle Token,Governance Token,Rich Fungible Token,Meme Token, Real World Asset Token, Social Token, Political Token, Environmental Token, Cultural Token, Love Token, Qualification Token, Achievement Token,Memorial Token, Tourist Token
+                    assetAuthor:"Bernard Sibanda",
+                    tags:"pet,social,love,misheck,Bernard Sibanda,intelligent,Cardano blockchain",
+                    assetClassification:"NFT",
+                    mintThankYouNFT:mintThankYouNFT
+                }
+            
+             const m = await mint(data); j.log({m});
+             
+             return m;
+        }
+
+
+    </script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <!-- Logo -->
+        <img src="coxygen.png" alt="Coxygen Logo" class="logo">
+        <h1>Welcome to Coxygen Global</h1>
+        <p>24/7 Live Technical Support for Cardano Smart Contract Development</p>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+  <h1 class="league-spartan-title">Donate to Coxygen Global</h1>
+        <div class="balance-card">
+            <p class="league-spartan-regular" id="adaBalance">₳ 0</p>
+        </div>
+
+        <form id="sendAdaForm">
+            <div class="input-group">
+                <div id="thankyou"></div><br>
+                <label for="donorName">Your Name:</label>
+                <input type="text" id="donorName" class="league-spartan-input" placeholder="Enter your name" />
+            </div>
+
+            <div class="input-group">
+                <label for="donorEmail">Your Email (Optional):</label>
+                <input type="email" id="donorEmail" class="league-spartan-input" placeholder="Enter your email" />
+            </div>
+
+            <div class="input-group">
+                <label for="amount">Amount to Donate (in ADA):</label>
+                <input type="number" id="amount" class="league-spartan-input" placeholder="Enter amount" required />
+            </div>
+
+            <div class="button-group">
+                <button type="submit" id="send" class="send-button" >Donate</button>
+                <button type="button" id="clearForm" class="reset-button">Reset</button>
+            </div>
+        </form>
+
+        <div class="donor-list-container" style="text-align:left;">
+            <h3>List of Donors(ADA)</h3>
+            <ul id="donorList"></ul>
+        </div>
+
+        <div class="goal-container">
+            <p class="goal-progress" id="goalProgress">₳0 / ₳1000</p>
+            <div class="goal-bar">
+                <div id="goalBarFill" class="goal-bar-fill"></div>
+            </div>
+        </div>
+       
+        <div class="terms">
+            <p>By donating, you agree to our <a href="#">Terms of Service</a>.</p>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        &copy; 2024 Coxygen Global. Supporting Cardano developers for a decentralized future.
+        <div class="footer-info">
+            <p>Developer: Ridotshila Mambeda | Date: November 11, 2024 | App Version: 1.0.3</p>
+        </div>
+    </footer>
+
+    <script>
+       
+       
+    </script>
+</body>
+</html>

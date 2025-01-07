@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Coxygen Global - Cardano Live Technical Support</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coxygen Global - Cardano Live Technical Support</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'League Spartan', sans-serif;
+            background-color: #eef5ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Container for header and main content */
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+            padding: 20px;
+            margin: 0 auto;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #003B6E;
+            color: #fff;
+            padding: 30px 20px; /* Added horizontal padding */
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            top: 0;
+            z-index: 999;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        header p {
+            font-size: 18px;
+            margin-top: 8px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Logo styles */
+        .logo {
+            max-width: 150px;
+            margin-bottom: 15px;
+        }
+
+        /* Intro section */
+        .intro-section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f7fbff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-section h2 {
+            font-size: 24px;
+            color: #003B6E;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .intro-section p {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Email Input Section */
+        .email-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #eef5ff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .email-section h3 {
+            font-size: 20px;
+            color: #003B6E;
+            font-weight: 600;
+        }
+
+        .email-section p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .email-input {
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .email-submit-button {
+            background-color: #003B6E;
+            color: #fff;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .email-submit-button:hover {
+            background-color: #046e6e;
+        }
+
+        /* Recent donations section */
+        .recent-donations {
+            background-color: #eef5ff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            margin-top: 30px;
+        }
+
+        .recent-donations h3 {
+            font-size: 20px;
+            color: #003B6E;
+            font-weight: 600;
+        }
+
+        .donation-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+            font-size: 15px;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .donation-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #d9e6f2;
+        }
+
+        /* Donation button */
+        .donate-button {
+            display: inline-block;
+            background-color: #003B6E;
+            color: #fff;
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 59, 110, 0.2);
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .donate-button:hover {
+            background-color: #046e6e;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.6);
+            border-top: 1px solid #d0e1f0;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            background-color: #003B6E;
+            color: #fff;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-info {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <!-- Logo -->
+        <img src="coxygen.png" alt="Coxygen Logo" class="logo">
+        <h1>Welcome to Coxygen Global</h1>
+        <p>24/7 Live Technical Support for Cardano Smart Contract Development</p>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Intro Section -->
+        <div class="intro-section">
+            <h2>Support Our Mission to Empower Cardano Developers</h2>
+            <p>Coxygen is a 24/7 Cardano Live Technical Support Service on Cardano Smart Contract development languages...</p>
+            <a href="index.html" class="donate-button">Donate ADA and receive donor NFT</a>
+        </div>
+
+        <!-- Email Input Section -->
+        <div class="email-section">
+            <h3>Interested in Donating? Enter Your Email</h3>
+            <p>Stay updated with our progress and join us in empowering the Cardano ecosystem. Please enter your email to receive updates.</p>
+            <form class="email-form" id="emailForm" action="process_email.php" method="POST">
+                <input type="email" name="email" id="email" class="email-input" placeholder="Enter your email" required>
+                <button type="submit" class="email-submit-button">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        &copy; 2024 Coxygen Global. Supporting Cardano developers for a decentralized future.
+        <div class="footer-info">
+            <p>Developer: Ridotshila Mambeda | Date: November 11, 2024 | App Version: 1.0.0</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript to handle form submission and display an alert
+        document.getElementById('emailForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the form from submitting normally
+
+            const email = document.getElementById('email').value;
+
+            // Use fetch to send the email to the PHP script
+            fetch('process_email.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'email=' + encodeURIComponent(email)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display an alert based on the response from the server
+                if (data.status === 'success') {
+                    alert(data.message); // Success message
+                } else {
+                    alert(data.message); // Error message
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error processing your request.');
+            });
+        });
+    </script>
+</body>
+</html>

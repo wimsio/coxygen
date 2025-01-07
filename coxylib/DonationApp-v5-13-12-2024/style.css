@@ -1,0 +1,156 @@
+/* Base styling with League Spartan font */
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "League Spartan", sans-serif;
+    background-color: #e9f1ff;
+    color: #333;
+    height: 100vh;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+/* Main container centered layout */
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Title styling for bold titles */
+.league-spartan-title {
+    font-weight: 700;
+    font-size: 24px;
+    color: #1a8d8d;
+    margin-bottom: 15px;
+}
+
+/* Regular text styling */
+.league-spartan-regular {
+    font-weight: 400;
+    color: #333;
+}
+
+/* Light text styling */
+.league-spartan-light {
+    font-weight: 300;
+    color: #666;
+}
+
+/* Button text styling */
+.league-spartan-button {
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+}
+
+/* Input field styling */
+.league-spartan-input {
+    font-weight: 400;
+    font-size: 16px;
+    color: #333;
+    padding: 12px;
+    border: none;
+    outline: none;
+    background-color: #f0f4ff;
+    border-radius: 5px;
+}
+
+/* Container with card-like design */
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 360px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Balance display styling */
+.balance-card {
+    background-color: #f7fbff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px 0;
+    text-align: center;
+    color: #333;
+}
+
+/* Input group styling */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Labels styling */
+.input-group label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Input icon group styling */
+.input-icon-group {
+    display: flex;
+    align-items: center;
+    background-color: #eef3ff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Buttons container */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Styling for both buttons */
+.send-button, .reset-button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 12px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+/* Customize the donate button */
+.send-button {
+    background-color: #1a8d8d;
+}
+
+.send-button:hover {
+    background-color: #046e6e;
+}
+
+/* Customize the reset button */
+.reset-button {
+    background-color: #092f99;
+}
+
+.reset-button:hover {
+    background-color: #021f66;
+}
+
+/* Terms footer styling */
+.terms {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 20px;
+    text-align: center;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+
+
