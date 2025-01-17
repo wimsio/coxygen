@@ -5,21 +5,21 @@ Below are the updated outcomes of the survey (https://docs.google.com/forms/d/1j
 
 ### A: Quantitative Results
 
-![image](https://github.com/user-attachments/assets/8db08e9e-1695-40eb-82b3-368fa98f9c19)
+![image](https://github.com/user-attachments/assets/b756b7e0-63b3-4c46-a35b-9f179217f6de)
 
-![image](https://github.com/user-attachments/assets/211956ab-6b8c-4dab-b759-641fa2ab0fe4)
+![image](https://github.com/user-attachments/assets/52d5db4c-7ff2-4e82-8184-cc234fc48c24)
 
-![image](https://github.com/user-attachments/assets/e1c26d8b-4c77-4429-bc76-c657add4ac6f)
+![image](https://github.com/user-attachments/assets/9e81fabf-10a8-4208-acf5-79ad654f8e57)
 
-![image](https://github.com/user-attachments/assets/360ca1d4-69d9-494b-9e9c-6b765d0372af)
+![image](https://github.com/user-attachments/assets/df8bc196-9f9e-4235-a7f2-3d759161a816)
 
-![image](https://github.com/user-attachments/assets/723a1ad0-880a-49c9-ba57-35380956d1a8)
+![image](https://github.com/user-attachments/assets/887b37b7-916c-457d-aee2-f4cb539da100)
 
-![image](https://github.com/user-attachments/assets/a5463420-1fc0-4505-987a-306a3c6dadd1)
+![image](https://github.com/user-attachments/assets/e4ee8db8-874e-471e-8356-239968525127)
 
-![image](https://github.com/user-attachments/assets/9676b30b-db2d-418d-92f2-b6900e1af868)
+![image](https://github.com/user-attachments/assets/4dec4c70-e7b1-4f9c-baf9-601ce8975262)
 
-![image](https://github.com/user-attachments/assets/4eb719b2-06a6-420f-a207-9131810f0c55)
+![image](https://github.com/user-attachments/assets/f95e3232-300c-4359-b6e4-39d3403ad1c5)
 
 ### B: Unguided Responses
 
