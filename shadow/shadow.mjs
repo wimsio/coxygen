@@ -13,7 +13,7 @@ import {
   ValidatorHash,
   BIP39_DICT_EN,
   bytesToText
-} from "./archive/helios.js";
+} from "./helios-min.js";
 
 const HELP_TEXT = `Shadow CLI Toolkit
 
