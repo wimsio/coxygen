@@ -1,0 +1,7 @@
+spending signature_smart_contract
+
+const OWNER :PubKeyHash = PubKeyHash::new(#9f711be3753ee805982a020ffe3c904c496db4e13ee064e66fd7469d)
+
+func main(_, _, ctx: ScriptContext) -> Bool {
+    ctx.tx.is_signed_by(OWNER)
+}

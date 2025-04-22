@@ -1,0 +1,7 @@
+spending hello_world
+
+// always succeeds
+func main(_,_,_) -> Bool {
+    print("hello bernard ");
+    true
+}
