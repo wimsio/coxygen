@@ -1,0 +1,36 @@
+{
+  "mnemonic": [
+    "pencil",
+    "lobster",
+    "script",
+    "sword",
+    "settle",
+    "process",
+    "whale",
+    "photo",
+    "shiver",
+    "wheel",
+    "answer",
+    "know",
+    "deal",
+    "arrow",
+    "awake",
+    "have",
+    "fringe",
+    "mango",
+    "title",
+    "finger",
+    "quantum",
+    "capable",
+    "index",
+    "target"
+  ],
+  "payment": {
+    "pubKeyHash": "c787534fef2afc57be974d210371cb3d4de24d00889fe10e1f6f4cbf",
+    "address": "addr_test1qrrcw560au40c4a7jaxjzqm3ev75mcjdqzyflcgwrah5e0cqqqufqu5pws9ane8wgdakvjp40a5rvax0t5xd733z9zjs9nrhac"
+  },
+  "staking": {
+    "pubKeyHash": "000038907281740bd9e4ee437b6648357f683674cf5d0cdf462228a5",
+    "stakeAddress": "stake_test1uqqqqwysw2qhgz7eunhyx7mxfq6h76pkwn846rxlgc3z3fglt344v"
+  }
+}
