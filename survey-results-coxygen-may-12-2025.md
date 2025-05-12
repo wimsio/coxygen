@@ -1,20 +1,33 @@
 # Survey Results : Coxygen Global May 12, 2025
 
+## Catalyst Project : Cardano Ecosystem : Smart Contract Languages LIve Support(Oxygen), Documentation and Adoption
+
+## Project ID : 1100050
+
 ## Table of Contents
 
 1. [Introduction](#1-introduction)
 2. [Methodology](#2-methodology)
 3. [Respondent Overview](#3-respondent-overview)
 4. [Key Findings](#4-key-findings)
+   
    4.1. [Geographic Distribution](#41-geographic-distribution)
+   
    4.2. [Awareness of Service Schedule](#42-awareness-of-service-schedule)
+   
    4.3. [Developer Status](#43-developer-status)
+   
    4.4. [Qualification Levels](#44-qualification-levels)
+   
    4.5. [Language Preferences](#45-language-preferences)
+   
    4.6. [Preferred Development Language](#46-preferred-development-language)
+   
    4.7. [Service Satisfaction Ratings](#47-service-satisfaction-ratings)
+   
    4.8. [Qualitative Feedback](#48-qualitative-feedback)
-5. [Conclusions & Recommendations](#5-conclusions--recommendations)
+   
+6. [Conclusions & Recommendations](#5-conclusions--recommendations)
 
 ## 1. Introduction
 
@@ -36,7 +49,7 @@ The approach is both quantitative and qualitative.
   | Question                | MissingCount |
   | ----------------------- | ------------ |
   | Comments                | 10           |
-  | *(All other questions)* | 0            |
+
 
 Half of participants did not provide additional comments.
 
