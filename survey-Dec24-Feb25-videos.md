@@ -45,11 +45,11 @@ Cardano community members requiring such a service.
 
 ## 5. Coxygen Global Live Technical Services can be Commercialized
    Taking the Live Technical support service to the next level : making is available to those also
-   who need specialized help. 75% evaluators selected Yes to this. This means Coxygen can offer this service
+   who need specialized help. 81% evaluators selected Yes to this. This means Coxygen can offer this service
    not only to individuals but also to companies and other communities at the same time remain
    giving free services to the world of Cardano.
 
-![image](https://github.com/user-attachments/assets/b8c785ca-6471-48e8-af28-06cb592bfcc8)
+![image](https://github.com/user-attachments/assets/09c6b69c-9c2a-405f-8e3a-35392750b416)
 
 ## 6. Do you also want this type of service?
    To this question 85% evaluators answered Yes. It means there is a demand for Live Technical Services.
