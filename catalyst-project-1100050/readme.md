@@ -2,9 +2,9 @@ Final Milestone
 
 Cardano Ecosystem : Smart Contract Languages Live Support(Oxygen), Documentation and Adoption
 
-Delivery Date : 14-05-2024
+Delivery Date : 17-05-2024
 
-By Bernard Sibanda
+Project Manager: Bernard Sibanda
 
 Project ID : 1100050
 
@@ -91,9 +91,9 @@ https://videos.coxygen.co/2025/03/30/cardano-live-dec24-feb25/ (27 videos)
 
 7. Closeout Report
 
-
+https://github.com/wimsio/coxygen/blob/main/catalyst-project-1100050/Coxygen_Global_Project_Close_Out_Report%20v3%2011052025.pdf
 
 8. Closeout Video
 
-
+https://youtu.be/EPfgkFm82hI
 
