@@ -81,7 +81,8 @@ c) https://github.com/wimsio/coxygen/blob/main/shadow/tests/cli.test.js
 a) https://cardanopropertysolutions.co/help/
 
 b) https://coxygen.co/universities/help/
-c) ttps://app.gitbook.com/o/PS1BRD80SldnsITv8hmH/s/l8BbYrrg5XMHZBwRQo0E/~/changes/JTanaaHGhXdPxpeeExrW/
+
+c) https://app.gitbook.com/o/PS1BRD80SldnsITv8hmH/s/l8BbYrrg5XMHZBwRQo0E/~/changes/JTanaaHGhXdPxpeeExrW/
 
 d) https://github.com/besiwims/plutus-tx-template/wiki/Home-:-Plutus
 
