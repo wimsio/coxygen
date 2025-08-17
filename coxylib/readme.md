@@ -9,8 +9,6 @@ Advantages of this Coxylib:
 - every developer knows how to use javascript and therefore this library helps make any developer develop on Cardano.
 - easy to deploy: to test, one has to copy and upload the coxylib folder to a cpanel folder and simple run it by pointing to the index.html. In the index.html given comment out code to test the library.
 
-- Test the library live at https://coxygen.co/coxylib/index.html
-
 - (Connect NamiEternl to preprod network and add 5tADA collateral and have at least 20tAda in order to mint nfts); report issues here.
 
 - ![image](https://github.com/user-attachments/assets/23868fda-9747-4823-9a83-ff605b837027)
