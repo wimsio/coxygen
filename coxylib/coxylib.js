@@ -1,5 +1,5 @@
 /*
-Version : 1.0.9
+Version : 1.1.0
 Coxylib is a set of atomic functions simplifying use of Helios smart contract library.
 Author:         Bernard Sibanda (Coxygen Global Pty Ltd)
 License :       MIT License
