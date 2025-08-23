@@ -6,8 +6,9 @@
 - **No Node/NPM** needed
 - **MIT Licensed**
 - **Status:** Stable • ready for preprod/mainnet
+- **Build in testing Jimba.js**
 
-> Documentation: [Coxylib Docs](https://coxylib.xyz/index.html) | [Helios Docs](https://helios-lang.io/)
+> Documentation: [Coxylib Docs](https://coxylib.xyz/index.html) | [Helios Docs](https://helios-lang.io/) | [Jimba](https://www.npmjs.com/package/jimba)
 
 ## Table of contents
 
@@ -37,6 +38,7 @@ Coxylib focuses on **small, composable browser functions** that sit on top of [H
 - Fast minting & transaction flows
 - CIP-68 helpers & metadata tools
 - Drop-in on any static site
+- The functions are wrapped up with Jimba for introspective toggleable testing and logging
 
 ## Live examples
 
