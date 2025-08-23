@@ -1,219 +1,242 @@
-# Coxylib v1.1.0
+# Coxylib v1.1.0 - 23-08-2025
 
 **Atomic Helios wrapper functions for fast, testable Cardano smart-contract development — no build tools required.**
 
-- **Client-side only** (works on any static host, even cPanel)
-- **No Node/NPM** needed
-- **MIT Licensed**
-- **Status:** Stable • ready for preprod/mainnet
-- **Build in testing Jimba.js**
+* ⚡ **Client-side only** (works on any static host, even cPanel)
+* 📦 **No Node/NPM** needed
+* 📜 **MIT Licensed**
+* 🟢 **Status:** Stable • ready for preprod/mainnet
+* 🧪 **Build in testing Jimba.js**
 
-> Documentation: [Coxylib Docs](https://coxylib.xyz/index.html) | [Helios Docs](https://helios-lang.io/) | [Jimba](https://www.npmjs.com/package/jimba)
+> Docs: [Coxylib](https://coxylib.xyz/index.html) | [Helios](https://helios-lang.io/) | [Jimba](https://www.npmjs.com/package/jimba)
 
-## Table of contents
 
-- [Why Coxylib?](#why-coxylib)
-- [Live examples](#live-examples)
-- [Quick start](#quick-start)
-- [Usage snippets](#usage-snippets)
-  - [Initialize wallet](#initialize-wallet)
-  - [Mint a simple NFT](#mint-a-simple-nft)
-  - [Send ADA / assets](#send-ada--assets)
-  - [CIP-68 helpers](#cip-68-helpers)
-  - [Metadata utilities](#metadata-utilities)
-- [Network config](#network-config)
-- [API reference](#api-reference)
-- [Browser support](#browser-support)
-- [Contributing](#contributing)
-- [License](#license)
-- [Credits & contact](#credits--contact)
-- [Links](#links)
 
-## Why Coxylib?
+## 📑 Table of Contents
 
-Coxylib focuses on **small, composable browser functions** that sit on top of [Helios] for Cardano. It’s ideal when you want to prototype or ship quickly without a bundler:
+1. [Why Coxylib?](#1️⃣-why-coxylib-)
+2. [Live Examples](#2️⃣-live-examples-)
+3. [Quick Start](#3️⃣-quick-start-)
+4. [Usage Snippets](#4️⃣-usage-snippets-)
 
-- Testable atomic utilities
-- Wallet helpers (CIP-30)
-- Fast minting & transaction flows
-- CIP-68 helpers & metadata tools
-- Drop-in on any static site
-- The functions are wrapped up with Jimba for introspective toggleable testing and logging
+   * [Get UTXOs](#-1-get-utxos)
+   * [Send ADA](#-2-send-ada)
+   * [Send Tokens](#-3-send-tokens)
+   * [Mint a Simple NFT](#-4-mint-a-simple-nft)
+   * [Consolidate UTXOs](#-5-consolidate-utxos)
+   * [Wallet Derivation](#-6-wallet-derivation)
+   * [Metadata Utilities](#-7-metadata-utilities)
+5. [Network Config](#5️⃣-network-config-)
+6. [API Reference](#6️⃣-api-reference-)
+7. [Browser Support](#7️⃣-browser-support-)
+8. [Glossary](#8️⃣-glossary-of-terms-)
+9. [Contributing](#9️⃣-contributing-)
+10. [Links & Contact](#🔟-links--contact-)
 
-## Live examples
 
-Websites connected to Cardano via **Helios + Coxylib**:
 
-- https://coxygen.co/universities  
-- https://cardanopropertysolutions.co  
-- https://coxygen.co/coxygen.co/demo/00-20062025/vesting.html  
-- https://coxygen.co/coxygen.co/rido/DonationApp-v4-15112024/  
+## 1️⃣ Why Coxylib? ⚡
 
-## Quick start
+Coxylib focuses on **small, composable browser functions** on top of \[Helios]. Ideal for rapid prototyping:
 
-Include **Helios**, **Jimba**, and **Coxylib** on a static page and start coding.
+* 🧩 Testable atomic utilities
+* 🔑 Wallet helpers (CIP-30 + mnemonics)
+* 🪙 Minting & transfer flows
+* 📜 CIP-68 + metadata tools
+* 🌐 Drop-in on static sites
+* 🐞 Jimba.js logging/testing
+
+
+
+## 2️⃣ Live Examples 🌍
+
+* [Coxy Wallet](https://coxygen.co/universities/wallet.php)
+* [https://coxygen.co/universities](https://coxygen.co/universities)
+* [https://cardanopropertysolutions.co](https://cardanopropertysolutions.co)
+* [https://coxygen.co/coxygen.co/demo/00-20062025/vesting.html](https://coxygen.co/coxygen.co/demo/00-20062025/vesting.html)
+* [https://coxygen.co/coxygen.co/rido/DonationApp-v4-15112024/](https://coxygen.co/coxygen.co/rido/DonationApp-v4-15112024/)
+
+## 3️⃣ Quick Start 🚀
 
 ```html
-<!-- Include dependencies -->
 <script type="module" src="./helios-min.js"></script>
 <script type="module" src="./jimba.js"></script>
-
-<!-- Import Coxylib -->
-<script type="module">
-  import * as coxy from "./coxylib.js";
-
-  // 1) Initialize
-  const wallet = await coxy.init(coxy.j);
-
-  // 2) Get wallet essentials (CIP-30 + helpers)
-  const info = await coxy.walletEssentials(
-    wallet,
-    coxy.Cip30Wallet,
-    coxy.WalletHelper,
-    coxy.Value,
-    coxy.txPrerequisites.minAda,
-    coxy.j
-  );
-
-  console.log("Ready:", info);
-</script>
+<script type="module" src="./coxylib.js"></script>
 ```
 
-> Tip: Serve the folder with any static server (e.g., `python -m http.server`) so `module` imports work.
+```js
+import {
+  hlib,
+  getAllTxInputs,
+  TEST_BLOCKFROST,
+  TEST_NETWORK_PARAMS_PREPROD,
+  txPrerequisites,
+  sendADA,
+  sendAssets,
+  mintBurnToken,
+  sumUTXOADA,
+  textToHex,
+  hexToText
+} from "./coxylib.js";
+```
 
+## 4️⃣ Usage Snippets 💻
 
-
-## Usage snippets
-
-Below are minimal patterns. See the JSDoc pages for full signatures and options.
-
-### Initialize wallet
+### 🔹 (1) Get UTXOs
 
 ```js
-import * as coxy from "./coxylib.js";
+const addr = hlib.Address.fromBech32("addr_test1...");
+const utxos = await getAllTxInputs(addr);
+console.log("UTXOs", utxos);
+```
 
-const wallet = await coxy.init(coxy.j);
-const essentials = await coxy.walletEssentials(
-  wallet,
-  coxy.Cip30Wallet,
-  coxy.WalletHelper,
-  coxy.Value,
-  coxy.txPrerequisites.minAda,
-  coxy.j
+### 🔹 (2) Send ADA
+
+```js
+const txh = await sendADA("addr_test1q...recipient", 5, myPaymentKey);
+console.log("tx hash", txh);
+```
+
+### 🔹 (3) Send Tokens
+
+```js
+const data = {
+  pk: myPaymentKey,
+  utxos: myUtxos,
+  address: "addr_test1...sender",
+  toAddress: "addr_test1...recipient",
+  assetMPH: "policyidhere...",
+  assetName: "MyToken",
+  assetQty: 10,
+  clickBtnElem: el("btnSendAssets"),
+  displayElem: el("assetElement")
+};
+
+const txh = await sendAssets(data);
+console.log("tx hash", txh);
+```
+
+### 🔹 (4) Mint a Simple NFT
+
+```js
+import { scriptForMintingUniversitiesCollegesNFT } from "./scripts/scriptForMintingUniversitiesCollegesNFT.js";
+import { scriptForLockingUCNFTs } from "./scripts/scriptForLockingUCNFTs.js";
+
+const info = {
+  assetName: textToHex("MyNFT"),
+  assetTitle: "Demo NFT",
+  imageIPFS: "ipfs://.../demo.png",
+  organization: "Demo Org",
+  assetPurpose: "NFT",
+  quantity: 1,
+  recipientPayKey: myPaymentKey,
+  baseAddress: hlib.Address.fromBech32("addr_test1..."),
+  TEST_BLOCKFROST,
+  TEST_NETWORK_PARAMS_PREPROD
+};
+
+const txh = await mintBurnToken(
+  scriptForMintingUniversitiesCollegesNFT,
+  scriptForLockingUCNFTs,
+  info
 );
+console.log("minted tx hash", txh);
 ```
 
-### Mint a simple NFT
+### 🔹 (5) Consolidate UTXOs
 
 ```js
-// Pseudocode: consult docs for the exact shape of params
-// See: ./global.html#mint_ (or #mint)
-await coxy.mint_({
-  name: "MyFirstNFT",
-  image: "ipfs://.../image.png",
-  // policy, recipient, and other fields per docs…
-});
+const txh = await sumUTXOADA(
+  myAddress,
+  hlib.TxInput,
+  myAddress.pubKeyHash,
+  myPaymentKey,
+  TEST_NETWORK_PARAMS_PREPROD,
+  TEST_BLOCKFROST
+);
+console.log("consolidated tx hash", txh);
 ```
 
-### Send ADA / assets
+### 🔹 (6) Wallet Derivation
 
 ```js
-// See: ./global.html#sendADA and ./global.html#sendAssets
-await coxy.sendADA({
-  to: "addr1...",            // Bech32 recipient
-  lovelace: 4_000_000,       // amount in lovelace
-  note: "Thanks!"
-});
+const enc = await getEncryptedData("./keys.php", { pin, postStatus: "get", PrimaryEmail: email });
+const wordsCsv = await decryptMnemonic(passphrase, enc.salt, enc.iv, enc.ct);
+const words = wordsCsv.split(",");
 
-// For tokens:
-await coxy.sendAssets({
-  to: "addr1...",
-  assets: [{ policyId: "...", name: "TOKEN", qty: 1 }],
-});
+const root = hlib.RootPrivateKey.fromPhrase(words);
+const payKey = root.deriveSpendingRootKey(0).derive(1).derive(0);
+const stakeKey = root.deriveStakingRootKey(0).derive(0);
+
+const addr = hlib.Address.fromPubKeyHash(
+  payKey.derivePubKey().pubKeyHash,
+  stakeKey.derivePubKey().pubKeyHash,
+  hlib.config.IS_TESTNET
+);
+
+console.log("derived address", addr.toBech32());
 ```
 
-### CIP-68 helpers
+### 🔹 (7) Metadata Utilities
 
 ```js
-// See: ./global.html#createCIP68Token
-const names = coxy.createCIP68Token({
-  policyId: "...",
-  baseName: "MyAsset",   // library helps with reference/content names per CIP-68
+import { generateMetadata } from "./coxylib.js";
+
+const m721 = generateMetadata({
+  policyId: "policyidhere...",
+  assets: [{ name: "MyNFT", image: "ipfs://.../demo.png" }]
 });
-console.log(names);
+
+console.log("721 metadata", m721);
 ```
 
-### Metadata utilities
-
-```js
-// See: ./global.html#generateMetadata
-const m721 = coxy.generateMetadata({
-  policyId: "...",
-  assets: [{ name: "MyFirstNFT", image: "ipfs://..." }],
-});
-console.log(m721);
-```
-
-
-
-## Network config
-
-Default values shipped with this repo (adjust to your needs):
+## 5️⃣ Network Config ⚙️
 
 * **Network params:** `./params/preprod.json`
 * **Min ADA UTxO:** `4,000,000` lovelace
-* **Max fee (cap):** `3,000,000` lovelace
+* **Max fee cap:** `3,000,000` lovelace
 
-You can swap the params file for preview/mainnet or your custom JSON when you build transactions.
+## 6️⃣ API Reference 📚
 
-## API reference
+* `getAllTxInputs` → fetch UTXOs
+* `sendADA` → transfer ADA
+* `sendAssets` → transfer tokens
+* `mintBurnToken` → mint/burn
+* `sumUTXOADA` → consolidate
+* `generateMetadata` → CIP-721 JSON
+* `createFiveWalletAddresses` → derive 5 addresses
 
-* **Namespaces:** [`hlib`](./hlib.html), [`psxTime`](./psxTime.html)
-* **Popular functions:**
+## 7️⃣ Browser Support 🌐
 
-  * [`mint`](./global.html#mint), [`mint_`](./global.html#mint_)
-  * [`sendADA`](./global.html#sendADA), [`sendAssets`](./global.html#sendAssets)
-  * [`createCIP68Token`](./global.html#createCIP68Token)
-  * [`tokenFound`](./global.html#tokenFound)
-  * [`generateMetadata`](./global.html#generateMetadata)
+Modern evergreen browsers. Use `import` via HTTP(S), not `file://`.
 
-## Browser support
+## 8️⃣ Glossary of Terms 📖
 
-Modern evergreen browsers (Chromium, Firefox, Safari). The library is loaded using **ES modules**, so serve over HTTP(S) rather than opening `file://` directly.
+* **UTXO** – Unspent Transaction Output
+* **Lovelace** – smallest ADA unit (1 ADA = 1,000,000 lovelace)
+* **PKH** – Public Key Hash
+* **Mnemonic** – 12/24 recovery words for wallets
+* **Policy ID (MPH)** – identifier for token minting policy
+* **CIP-68** – Reference NFTs w/ inline metadata
+* **CIP-721** – NFT metadata JSON standard
+* **Blockfrost** – API service to query/submit Cardano txs
+* **Network Params** – protocol constants (fees, min ADA, etc.)
+* **Preprod / Preview** – safe Cardano testnets
 
-## Contributing
+## 9️⃣ Contributing 🤝
 
-Issues and PRs are welcome!
+1. Fork
+2. Branch
+3. Commit clearly
+4. PR with notes
 
-1. Fork the repo
-2. Create a feature branch
-3. Commit with clear messages
-4. Open a PR describing the change and any testing notes
+## 🔟 Links & Contact 🔗
 
-## Links
-
-1. **Website:** [https://coxygen.co](https://coxygen.co)
-2. **Email:** [admin@coxygen.co](mailto:admin@coxygen.co), [cto@coxygen.co](mailto:cto@coxygen.co)
-3. **GitHub (Org/Repo):** [https://github.com/wimsio/coxygen](https://github.com/wimsio/coxygen)
-4. **WhatsApp (Community):** [https://chat.whatsapp.com/I6y3xrRLMRfAIXQPb1IuU3](https://chat.whatsapp.com/I6y3xrRLMRfAIXQPb1IuU3)
-5. **Telegram:** [https://t.me/+JOi40VWgvMg0MzBk](https://t.me/+JOi40VWgvMg0MzBk)
-6. **Twitter/X:** [https://twitter.com/coxygenco](https://twitter.com/coxygenco)
-7. **Discord:** [https://discord.gg/RxrhMgnSb4](https://discord.gg/RxrhMgnSb4)
-
-8. ## License
-
-MIT © Coxygen Global
-
-## Credits & contact
-
-**Author:** Bernard Sibanda
-**Company:** Coxygen Global Pty Ltd
-
-**Repository:** [https://github.com/wimsio/coxygen/tree/main/coxylib](https://github.com/wimsio/coxygen/tree/main/coxylib)
-
-**Address:** 7 Gold Reef Road, Ormonde, 2190
-**Email:** [cto@wims.io](mailto:cto@wims.io), [admin@coxygen.co](mailto:admin@coxygen.co)
-**Mobile:** +27 73 182 0631
-
-> Security note: Always test on **preprod/preview** before mainnet. Validate inputs, set sensible fee/UTxO caps, and handle wallet permissions carefully.
+* 🌍 [Website](https://coxygen.co)
+* 📧 [admin@coxygen.co](mailto:admin@coxygen.co) | [cto@wims.io](mailto:cto@wims.io)
+* 🐦 [Twitter/X](https://twitter.com/coxygenco)
+* 💬 [Discord](https://discord.gg/RxrhMgnSb4)
+* 📱 [Telegram](https://t.me/+JOi40VWgvMg0MzBk)
+* 📞 [WhatsApp](https://chat.whatsapp.com/I6y3xrRLMRfAIXQPb1IuU3)
+* 📦 [GitHub](https://github.com/wimsio/coxygen/tree/main/coxylib)
 
