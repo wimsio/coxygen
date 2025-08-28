@@ -177,20 +177,22 @@ func main(redeemer: Redeemer, ctx: ScriptContext) -> Bool {
 }`
 ```
 
-> **Note:** Coxylib v1.1.0 exports ready-to-use constants like `TEST_NETWORK_PARAMS_PREPROD`, `TEST_BLOCKFROST`, and `txPrerequisites`. Functions mirror the signatures in your code.&#x20;
+> **Note:** Coxylib v1.1.1 exports ready-to-use constants like `TEST_NETWORK_PARAMS_PREPROD`, `TEST_BLOCKFROST`, and `txPrerequisites`. Functions mirror the signatures in your code.&#x20;
 
-## 5) 🧪 Jimba.js: Logging, Testing, Property-Style Checks
+## 5) 🧪 Jimba.js: Logging, Testing, Property-Based Testing
 
 * **One-liner logging convention:** always log on the **same line** as the variable being created/used for ultra-compact, toggleable diagnostics.
 
   * Example: `const words = await createMnemonic(); j.log({words})`
 * **Why Jimba (vs console):**
+  
+<img width="1830" height="722" alt="image" src="https://github.com/user-attachments/assets/7dea4a43-7a05-4d0a-a9b9-28457151cb3b" />
 
   * 🧷 **Toggleable**: switch between silent/logs/tests without touching code.
   * 🧩 **Front-End Harness**: logs render in your app UI, not hidden in DevTools.
   * ⏱️ **Profiling**: use `j.s()`/`j.e()` to measure function spans.
   * ✅ **Unit Tests**: `j.test()` / `j.check()` for assertions right in the browser.
-  * 🎲 **Property-Style Testing**: write randomized checks (e.g., varying inputs with `randomBytes`, mnemonics) to simulate **property-based** test behavior in-browser — fast feedback without extra libraries.&#x20;
+  * 🎲 **Property-Based Testing**: write randomized checks (e.g., varying inputs with `randomBytes`, mnemonics) to simulate **property-based** test behavior in-browser — fast feedback without extra libraries.&#x20;
 
 ## 6) 🚀 Usage Examples (Real Calls)
 
@@ -318,7 +320,7 @@ const someVal = await getValue("myKey"); j.log({someVal})
 
 * **Exports**: `hlib`, `txPrerequisites`, `TEST_NETWORK_PARAMS_PREPROD`, `TEST_BLOCKFROST`, `createMnemonic`, `createFiveWalletAddresses`, `randomBytes`, `encryptMnemonic`, `decryptMnemonic`, `getAllTxInputs`, `bech32ToPkh`, `hexToText`, `textToHex`, `generateMetadata`, `mintBurnToken`, `getValue`, etc. (see source for the complete list).&#x20;
 * **Network Params**: `TEST_NETWORK_PARAMS_PREPROD` auto-loads preprod params; `txPrerequisites.networkParamsUrl` is also used in flows.&#x20;
-* **Blockfrost**: `TEST_BLOCKFROST` is a ready instance for **preprod** in v1.1.0; pass it when required (e.g., `mintBurnToken(info.TEST_BLOCKFROST)`).&#x20;
+* **Blockfrost**: `TEST_BLOCKFROST` is a ready instance for **preprod** in v1.1.1; pass it when required (e.g., `mintBurnToken(info.TEST_BLOCKFROST)`).&#x20;
 * **Same-line Jimba logging**: keep `j.log({var})` **on the same line** as the variable usage to maintain compact, opt-out diagnostics.
 
 ## 8) 🛠️ Development Notes
