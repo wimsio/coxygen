@@ -1,4 +1,4 @@
-> Docs: [Coxylib API](https://coxylib.xyz/index.html) | [Helios](https://helios-lang.io/) | [Jimba](https://www.npmjs.com/package/jimba) | [Coxylib Video](https://youtu.be/rU2BXfPrr50)
+> Docs: [Coxylib API](https://coxylib.xyz/coxylib.js.html) | [Coxylib Website](https://coxylib.xyz/index.html) | [Helios](https://helios-lang.io/) | [Jimba](https://www.npmjs.com/package/jimba) | [Coxylib Video](https://youtu.be/rU2BXfPrr50)
 
 # 1) 📦 Coxylib (Vanilla JS for Static Sites)
 
