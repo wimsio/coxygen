@@ -1,36 +1,36 @@
 {
   "mnemonic": [
-    "sting",
-    "away",
-    "because",
-    "second",
-    "digital",
-    "cushion",
-    "shop",
-    "reopen",
-    "aunt",
-    "student",
-    "drum",
-    "jungle",
-    "ecology",
-    "special",
-    "strong",
+    "couple",
+    "begin",
+    "fury",
+    "worry",
+    "loan",
+    "truck",
+    "rude",
+    "message",
+    "oval",
+    "subject",
+    "assault",
+    "achieve",
+    "jewel",
+    "mimic",
+    "ignore",
+    "devote",
+    "frown",
     "shadow",
-    "analyst",
-    "thrive",
-    "argue",
-    "woman",
-    "spawn",
-    "creek",
-    "exclude",
-    "hurdle"
+    "pear",
+    "crucial",
+    "cup",
+    "acoustic",
+    "moon",
+    "nose"
   ],
   "payment": {
-    "pubKeyHash": "847905998a2f0c3d8cae732add600d76713f13b3232a0ff91cb3f54c",
-    "address": "addr_test1qzz8jpve3ghsc0vv4eej4htqp4m8z0cnkv3j5rlerjel2nykapsuju87wd7lc6e6qruq5mgn6y6yu68qdm4fdvnyr8cqyu6jhs"
+    "pubKeyHash": "a5f1f34c610fd94b0abe78ed222f42aa99c3f59da144f143c662dd5c",
+    "address": "addr_test1qzjlru6vvy8ajjc2heuw6g30g24fnsl4nks5fu2rce3d6hreemaftx5zvvk6qgkcwp32c0dw0zwzgcn8kljjzuwms53syk2ypw"
   },
   "staking": {
-    "pubKeyHash": "96e861c970fe737dfc6b3a00f80a6d13d1344e68e06eea96b26419f0",
-    "stakeAddress": "stake_test1uztwscwfwrl8xl0udvaqp7q2d5fazdzwdrsxa65kkfjpnuqjlx4en"
+    "pubKeyHash": "79cefa959a82632da022d87062ac3dae789c246267b7e52171db8523",
+    "stakeAddress": "stake_test1upuua754n2pxxtdqytv8qc4v8kh838pyvfnm0efpw8dc2gcupns6u"
   }
 }
