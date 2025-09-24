@@ -1,6 +1,10 @@
 # 1. 🌑 Shadow – A Helios-Based Smart Contract & Cryptographic CLI
 
-**Shadow** is a lightweight, developer-focused CLI built around the [Helios](https://github.com/Hyperion-BT/Helios) smart contract language. It simplifies day-to-day work with Plutus smart contracts, keys, addresses, and encodings — without requiring `cardano-cli`.
+**Shadow** is a lightweight, developer-focused CLI built around the [Helios](https://github.com/Hyperion-BT/Helios) smart contract language. It simplifies day-to-day work with Plutus smart contracts, keys, addresses, and encodings — without requiring `cardano-cli`. This does not replace the Cardano-CLI nor the Helios CLI but complements them.
+
+This is aimed at onboarding new students developers to the Cardano world of CLI computing and Helios Smart Contracts development.
+
+## 1. 🌑 Overview
 
 ## 2. 📑 Table of Contents
 
