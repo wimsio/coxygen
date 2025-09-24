@@ -152,9 +152,64 @@ function genWallet() {
     console.log("✅ Wallet generated, keys saved.");
 }
 
-function compileContract(filePath) {
+// function compileContract(fileName="always_succeed.hl") {
+
+//     const baseDir = path.resolve("scripts");
+
+//     const filePath = path.join(baseDir, fileName);
+
+//     if (!fs.existsSync(filePath)) {
+//         throw new Error(`Contract not found: ${filePath}`);
+//     }
+
+//     const src = fs.readFileSync(filePath, "utf8");
+//     const base = path.basename(filePath, ".hl");
+
+//     const program = Program.new(src);
+//     const uplc = program.compile(true);
+//     const cborBytes = uplc.toCbor();
+//     const cborHex = bytesToHex(cborBytes);
+
+//     const hash = Crypto.blake2b(cborBytes, 28);
+//     const validatorHash = new ValidatorHash(hash);
+//     const scriptHash = bytesToHex(hash);
+
+//     let addr;
+//     if (IS_STAKING) {
+//         addr = StakeAddress.fromValidatorHash(!IS_MAINNET, validatorHash).toBech32();
+//     } else {
+//         addr = Address.fromHash(validatorHash, !IS_MAINNET).toBech32();
+//     }
+
+//     fs.writeFileSync(`${base}.plutus`, JSON.stringify({
+//         type: "PlutusScriptV2",
+//         description: IS_NFT ? "CIP-68 NFT Policy Script" : "",
+//         cborHex
+//     }, null, 2));
+
+//     fs.writeFileSync(`${base}.hash`, scriptHash);
+//     fs.writeFileSync(`${base}.${NETWORK_LABEL}.addr`, addr);
+
+//     console.log(`✅ Contract compiled: ${base}.plutus`);
+//     console.log(`🔗 Hash: ${scriptHash}`);
+//     console.log(`🏷️  ${IS_STAKING ? "Staking" : "Validator"} Address: ${addr}`);
+
+//     if (IS_NFT) {
+//         console.log("🪙 NFT Policy ID:", scriptHash);
+//     }
+// }
+function compileContract(fileName = "always_succeed.hl") {
+    const baseDir = path.resolve("scripts");
+    const targetName = fileName.endsWith(".hl") ? path.basename(fileName) : `${path.basename(fileName)}.hl`;
+    const filePath = path.join(baseDir, targetName);
+
+    if (!fs.existsSync(filePath)) {
+        throw new Error(`Contract not found: ${filePath}`);
+    }
+
     const src = fs.readFileSync(filePath, "utf8");
     const base = path.basename(filePath, ".hl");
+    const out = (ext) => path.join(path.dirname(filePath), `${base}${ext}`);
 
     const program = Program.new(src);
     const uplc = program.compile(true);
@@ -165,23 +220,27 @@ function compileContract(filePath) {
     const validatorHash = new ValidatorHash(hash);
     const scriptHash = bytesToHex(hash);
 
-    let addr;
-    if (IS_STAKING) {
-        addr = StakeAddress.fromValidatorHash(!IS_MAINNET, validatorHash).toBech32();
-    } else {
-        addr = Address.fromHash(validatorHash, !IS_MAINNET).toBech32();
-    }
+    const addr = IS_STAKING
+        ? StakeAddress.fromValidatorHash(!IS_MAINNET, validatorHash).toBech32()
+        : Address.fromHash(validatorHash, !IS_MAINNET).toBech32();
 
-    fs.writeFileSync(`${base}.plutus`, JSON.stringify({
-        type: "PlutusScriptV2",
-        description: IS_NFT ? "CIP-68 NFT Policy Script" : "",
-        cborHex
-    }, null, 2));
+    fs.writeFileSync(
+        out(".plutus"),
+        JSON.stringify(
+            {
+                type: "PlutusScriptV2",
+                description: IS_NFT ? "CIP-68 NFT Policy Script" : "",
+                cborHex
+            },
+            null,
+            2
+        )
+    );
 
-    fs.writeFileSync(`${base}.hash`, scriptHash);
-    fs.writeFileSync(`${base}.${NETWORK_LABEL}.addr`, addr);
+    fs.writeFileSync(out(".hash"), scriptHash);
+    fs.writeFileSync(out(`.${NETWORK_LABEL}.addr`), addr);
 
-    console.log(`✅ Contract compiled: ${base}.plutus`);
+    console.log(`✅ Contract compiled: ${out(".plutus")}`);
     console.log(`🔗 Hash: ${scriptHash}`);
     console.log(`🏷️  ${IS_STAKING ? "Staking" : "Validator"} Address: ${addr}`);
 
@@ -189,6 +248,7 @@ function compileContract(filePath) {
         console.log("🪙 NFT Policy ID:", scriptHash);
     }
 }
+
 
 function hex(bytes) {
     return bytes.map(b => b.toString(16).padStart(2, '0')).join('');

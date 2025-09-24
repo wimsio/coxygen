@@ -1,0 +1,32 @@
+spending vesting
+const VERSION: String = "1.0.0"
+
+struct Datum {
+    seller: PubKeyHash
+
+}
+
+enum Redeemer {
+    Cancel
+    Buy {
+        id: String
+        buyer:PubKeyHash
+    }
+}
+
+const ID: String = "41"
+
+const SECRET: String = "secret"
+
+func main(datum: Datum, redeemer: Redeemer, ctx: ScriptContext) -> Bool {
+    tx: Tx = ctx.tx;
+    redeemer.switch {
+        Cancel => {
+            tx.is_signed_by(datum.seller) 
+        },
+        red: Buy => {
+            red.id == ID  
+            
+        }
+    }    
+}
