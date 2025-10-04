@@ -5,6 +5,53 @@
 Coxylib is a lightweight **browser-first** utility layer around the Helios smart contract library for Cardano. It exposes **atomic, composable functions** for addresses, UTXOs, transactions, minting, metadata, and more — all designed to be used directly from `<script type="module">` in static websites.
 **Logging & testing are handled by Jimba.js**, a toggleable front-end harness that replaces `console.log` with structured UI logs and built-in unit/property-style checks.&#x20;
 
+### The fastest way to build, test, and ship Cardano EUTXO apps—right in the browser
+
+**Coxylib.js** is a zero-dependency, vanilla-JavaScript toolkit that wraps **Helios** into small, composable utilities. It unifies on-chain and off-chain work so you can go from idea → demo → deployment in hours, not weeks.
+
+## Why teams choose Coxylib.js
+
+* **Zero setup, zero friction**
+  Drop the files into any static host (yes, even cPanel). No Node, npm, bundlers, frameworks, or extensions.
+
+* **One project, one directory**
+  Keep contracts, client logic, tests, and params together. Fewer moving parts; easier maintenance.
+
+* **Ship in agile loops**
+  Your *dev environment is your deploy environment*. Iterate in the browser and publish instantly.
+
+* **Built-in testing with Jimba**
+  Jimba’s lightweight, property-based testing and `j.log({ … })` instrumentation make desktop-class debugging possible in a web page.
+
+* **End-to-end flows out of the box**
+  High-level functions (e.g., **mint + lock** in a single call) encapsulate Helios boilerplate while keeping low-level handles (Tx/Value/Assets) available when you need them.
+
+* **Demo-ready UX**
+  Includes a simple, cross-platform **Coxy Wallet** for preprod testing (PIN-based), ideal for workshops, MVPs, and stakeholder demos.
+
+* **Truly accessible**
+  It’s **vanilla JS**—any web developer can contribute. Helios remains the functional smart-contract DSL; Coxylib is the ergonomic wrapper.
+
+* **Cost-efficient**
+  Code, test (Jimba), deploy, and maintain on inexpensive, widely available hosting. No backend fleet required.
+
+* **Prototype faster (AI-friendly)**
+  Designed for rapid prototyping and AI-assisted scaffolding so you can validate product fit sooner.
+
+## Perfect for
+
+Startups, hackathons, educators, and product teams who need a working Cardano dApp **now**—not after a tooling marathon.
+
+## Call to action
+
+**Want to support Coxylib.js?**
+
+* **Voters:** search **“Coxylib.js”** or **“Bernard Sibanda”** in the voting app.
+* **Builders & partners:** join the project (MIT-licensed) with **Coxygen Global**.
+  Email: **[cto@wims.io](mailto:cto@wims.io)**
+
+Let’s bring **a million websites** to Cardano.
+
 ## 2) 🗂️ Table of Contents
 
 1. [Coxylib (Vanilla JS for all types of websites and web applications)](#1--coxylib-vanilla-js-for-static-sites)
