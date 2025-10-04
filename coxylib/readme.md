@@ -1,18 +1,18 @@
 > Docs: [Coxylib API](https://coxylib.xyz/coxylib.js.html) | [Coxylib Website](https://coxylib.xyz/index.html) | [Helios](https://helios-lang.io/) | [Jimba](https://www.npmjs.com/package/jimba) | [Coxylib Video](https://youtu.be/rU2BXfPrr50)
 
-# 1) 📦 Coxylib (Vanilla JS for Static Sites)
+# 1) 📦 Coxylib.js Vanilla JS for everyone
 
-Coxylib is a lightweight **browser-first** utility layer around the Helios smart contract library for Cardano. It exposes **atomic, composable functions** for addresses, UTXOs, transactions, minting, metadata, and more — all designed to be used directly from `<script type="module">` in static websites.
+Coxylib is a lightweight **browser-first** utility layer around the Helios smart contract library for Cardano. It exposes **atomic, composable functions** for addresses, UTXOs, transactions, minting, metadata, and more — all designed to be used directly any website.
 **Logging & testing are handled by Jimba.js**, a toggleable front-end harness that replaces `console.log` with structured UI logs and built-in unit/property-style checks.&#x20;
 
-### The fastest way to build, test, and ship Cardano EUTXO apps—right in the browser
+### The fastest way to build, test, and ship Cardano EUTXO apps — right in the browser
 
-**Coxylib.js** is a zero-dependency, vanilla-JavaScript toolkit that wraps **Helios** into small, composable utilities. It unifies on-chain and off-chain work so you can go from idea → demo → deployment in hours, not weeks.
+**Coxylib.js** is a zero-dependency, vanilla-JavaScript toolkit that wraps **Helios** into small, composable utilities. It unifies on-chain and off-chain work so you can go from idea → demo → deployment in hours, not months or years.
 
-## Why teams choose Coxylib.js
+## Why people like Coxylib.js
 
 * **Zero setup, zero friction**
-  Drop the files into any static host (yes, even cPanel). No Node, npm, bundlers, frameworks, or extensions.
+  Drop the files into any host (yes, even cPanel). No Node, npm, bundlers, frameworks, or extensions.
 
 * **One project, one directory**
   Keep contracts, client logic, tests, and params together. Fewer moving parts; easier maintenance.
@@ -21,7 +21,7 @@ Coxylib is a lightweight **browser-first** utility layer around the Helios smart
   Your *dev environment is your deploy environment*. Iterate in the browser and publish instantly.
 
 * **Built-in testing with Jimba**
-  Jimba’s lightweight, property-based testing and `j.log({ … })` instrumentation make desktop-class debugging possible in a web page.
+  Jimba’s lightweight, property-based testing and logging instrumentation, make desktop-class debugging possible in a web page.
 
 * **End-to-end flows out of the box**
   High-level functions (e.g., **mint + lock** in a single call) encapsulate Helios boilerplate while keeping low-level handles (Tx/Value/Assets) available when you need them.
